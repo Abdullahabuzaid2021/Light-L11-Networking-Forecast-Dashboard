@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L11 Networking Forecast Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Simple fallback for Chart.js
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'SCRIPT' && e.target.src.includes('chart.js')) {
+                console.warn('Chart.js failed to load');
+            }
+        }, true);
+    </script>
     <style>
         * {
             margin: 0;
@@ -1452,7 +1460,7 @@
         window.onload = function() {
             console.log('Page loaded, embeddedData:', embeddedData);
             try {
-                if (embeddedData && embeddedData.summary) {
+                if (embeddedData && embeddedData.summary && embeddedData.summary.length > 0) {
                     // Use embedded data directly
                     globalData = embeddedData;
                     updateMetrics(embeddedData);
@@ -1461,9 +1469,10 @@
                     updateBreakdownTable(embeddedData.pivot);
                     updateCharts(embeddedData);
                     document.getElementById('dataStatus').textContent = `✅ Loaded ${embeddedData.total_items} items from ${embeddedData.total_files} files (Updated: ${embeddedData.generated_at})`;
+                    console.log('Data loaded successfully');
                 } else {
-                    document.getElementById('dataStatus').textContent = '⚠️ No embedded data available';
-                    loadData(); // Fallback to fetch
+                    console.error('Embedded data is empty or invalid');
+                    document.getElementById('dataStatus').textContent = '⚠️ No embedded data available. Please run process_data.py';
                 }
             } catch (error) {
                 console.error('Error loading embedded data:', error);
