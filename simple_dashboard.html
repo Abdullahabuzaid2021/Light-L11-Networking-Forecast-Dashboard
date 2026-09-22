@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L11 Networking Forecast Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <style>
         * {
             margin: 0;
@@ -246,6 +247,11 @@
     </div>
     
     <script>
+        // Register Chart.js datalabels plugin
+        if (typeof ChartDataLabels !== 'undefined') {
+            Chart.register(ChartDataLabels);
+        }
+        
         // Embedded data from repository Excel files
         const dashboardData = {"summary":[{"Networking":"MMS4B10-XM-RHS","Model/PN":"MMS4B10-XM-RHS","Units":124590.0},{"Networking":"MFP7E30-N050","Model/PN":"MFP7E30-N050","Units":99332.0},{"Networking":"MMS4B10-XM-RHS","Model/PN":"980-9IAJ0-00XM00","Units":73440.0},{"Networking":"MMS4X00-NM-T","Model/PN":"MMS4X00-NM-T","Units":56874.0},{"Networking":"MMS1X00-NS400","Model/PN":"MMS1X00-NS400","Units":49502.0},{"Networking":"Fibre Shuffle Cassettes - E-W Leaf rack","Model/PN":"4x4 Shuffle Cassette - Commscope 760263036","Units":33862.0},{"Networking":"SN5600D -  2U 64xOSFP112, DC BusBar, C2P (I/P) Airflow","Model/PN":"920-9N42F-00RI-KC0","Units":2142.0},{"Networking":"MFP7E40-N050","Model/PN":"MFP7E40-N050","Units":2052.0},{"Networking":"MMA4Z00-NS]","Model/PN":"MMA4Z00-NS]","Units":1558.0},{"Networking":"[MMA4Z00-NS-FLT","Model/PN":"[MMA4Z00-NS-FLT","Units":1532.0},{"Networking":"SN6600-LD -  DLC, OSFP Pluggable, DC BusBar","Model/PN":"920-9N62F-00LI-GC0","Units":1420.0},{"Networking":"2U SHUFFLE PANEL","Model/PN":"FiberPanel","Units":1006.0},{"Networking":"470-ABGH","Model/PN":"470-ABGH","Units":436.0},{"Networking":"A7204378\u00a0","Model/PN":"A7204378\u00a0","Units":436.0},{"Networking":"MMS1V70-CM","Model/PN":"MMS1V70-CM","Units":426.0},{"Networking":"SN2201 DC Busbar - MSN2201-CSMRC\u00a0\u00a0","Model/PN":"920-9N110-01R1-NC0 (DPN: J2MV9)","Units":316.0},{"Networking":"DLC Networking Racks - 48U","Model/PN":"Network rack (DLC)","Units":296.0},{"Networking":"MMS1V70-CM","Model/PN":"980-9I042- 00C000","Units":208.0},{"Networking":"PowerShelf","Model/PN":"PowerShelf 33KW, 19\", 1U, LiteOn","Units":172.0},{"Networking":"Air-Cooled Networking Racks - Clusters 48U","Model/PN":"Network rack (AC)","Units":142.0},{"Networking":"4x100G Patch Panel ","Model/PN":"Corning 4x100 Breakout PP","Units":24.0},{"Networking":"Corning 4x100 Breakout PP","Model/PN":"4x100G Patch Panel ","Units":8.0}],"files":[{"File":"Horizon PNL.xlsx","Tab":"PnL SN6600-_Horizon","Items":46,"Modified":"2026-09-22 09:46:46"},{"File":"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx","Tab":"PnL SN6600-LD","Items":14,"Modified":"2026-09-22 09:50:53"},{"File":"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx","Tab":"PnL SN6600-LD-0831 ","Items":20,"Modified":"2026-09-22 09:44:19"}],"pivot":[{"Networking":"MMS4B10-XM-RHS","Horizon PNL.xlsx":124590.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":124590.0},{"Networking":"MFP7E30-N050","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":2232.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":97100.0,"Total":99332.0},{"Networking":"MMS4B10-XM-RHS","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":73440.0,"Total":73440.0},{"Networking":"MMS4X00-NM-T","Horizon PNL.xlsx":36326.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":2616.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":17932.0,"Total":56874.0},{"Networking":"MMS1X00-NS400","Horizon PNL.xlsx":30662.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":1056.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":17784.0,"Total":49502.0},{"Networking":"Fibre Shuffle Cassettes - E-W Leaf rack","Horizon PNL.xlsx":15574.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":18288.0,"Total":33862.0},{"Networking":"SN5600D -  2U 64xOSFP112, DC BusBar, C2P (I/P) Airflow","Horizon PNL.xlsx":1734.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":70.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":338.0,"Total":2142.0},{"Networking":"MFP7E40-N050","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":2052.0,"Total":2052.0},{"Networking":"MMA4Z00-NS]","Horizon PNL.xlsx":1558.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":1558.0},{"Networking":"[MMA4Z00-NS-FLT","Horizon PNL.xlsx":1532.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":1532.0},{"Networking":"SN6600-LD -  DLC, OSFP Pluggable, DC BusBar","Horizon PNL.xlsx":556.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":864.0,"Total":1420.0},{"Networking":"2U SHUFFLE PANEL","Horizon PNL.xlsx":494.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":512.0,"Total":1006.0},{"Networking":"470-ABGH","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":16.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":420.0,"Total":436.0},{"Networking":"A7204378\u00a0","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":16.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":420.0,"Total":436.0},{"Networking":"MMS1V70-CM","Horizon PNL.xlsx":426.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":426.0},{"Networking":"SN2201 DC Busbar - MSN2201-CSMRC\u00a0\u00a0","Horizon PNL.xlsx":212.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":12.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":92.0,"Total":316.0},{"Networking":"DLC Networking Racks - 48U","Horizon PNL.xlsx":184.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":112.0,"Total":296.0},{"Networking":"MMS1V70-CM","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":24.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":184.0,"Total":208.0},{"Networking":"PowerShelf","Horizon PNL.xlsx":172.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":172.0},{"Networking":"Air-Cooled Networking Racks - Clusters 48U","Horizon PNL.xlsx":86.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":11.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":45.0,"Total":142.0},{"Networking":"4x100G Patch Panel ","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":24.0,"Total":24.0},{"Networking":"Corning 4x100 Breakout PP","Horizon PNL.xlsx":0.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx":8.0,"P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx":0.0,"Total":8.0}],"total_items":22,"total_quantity":449774,"total_files":3,"generated_at":"2026-09-22 12:17:22"};
         
@@ -322,6 +328,15 @@
                                         return 'Units: ' + context.parsed.y.toLocaleString();
                                     }
                                 }
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#333',
+                                font: {
+                                    weight: 'bold',
+                                    size: 11
+                                },
+                                formatter: (value) => value.toLocaleString()
                             }
                         },
                         scales: {
@@ -367,6 +382,19 @@
                                         const percentage = ((value / total) * 100).toFixed(1);
                                         return 'Units: ' + value.toLocaleString() + ' (' + percentage + '%)';
                                     }
+                                }
+                            },
+                            datalabels: {
+                                display: true,
+                                color: '#fff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 11
+                                },
+                                formatter: (value, context) => {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return value.toLocaleString() + '\n(' + percentage + '%)';
                                 }
                             }
                         }
