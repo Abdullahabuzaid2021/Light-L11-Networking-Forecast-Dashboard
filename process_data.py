@@ -3,6 +3,39 @@ import json
 from pathlib import Path
 from datetime import datetime
 import os
+import shutil
+
+def sync_sharepoint_files(sharepoint_path, local_data_path):
+    """Sync Excel files from SharePoint-synced directory to local data directory"""
+    try:
+        sharepoint_dir = Path(sharepoint_path)
+        local_dir = Path(local_data_path)
+        
+        if not sharepoint_dir.exists():
+            print(f"SharePoint directory not found: {sharepoint_path}")
+            return False
+        
+        # Ensure local data directory exists
+        local_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Copy Excel files from SharePoint to local data directory
+        files_copied = 0
+        for file in sharepoint_dir.glob("*.xlsx"):
+            dest_file = local_dir / file.name
+            shutil.copy2(file, dest_file)
+            files_copied += 1
+            print(f"Synced: {file.name}")
+        
+        if files_copied > 0:
+            print(f"Successfully synced {files_copied} files from SharePoint")
+            return True
+        else:
+            print("No Excel files found in SharePoint directory")
+            return False
+            
+    except Exception as e:
+        print(f"Error syncing SharePoint files: {e}")
+        return False
 
 def process_bom_data(directory):
     """Process all Excel files and aggregate BOM data from PnL SN6600 tabs"""
@@ -164,25 +197,54 @@ def generate_json_data(summary_df, files_df, pivot_df, combined_df):
     return data
 
 if __name__ == "__main__":
-    # Default directory - use data directory in the project
     script_dir = Path(__file__).parent.resolve()
-    default_dir = str(script_dir / "data")
+    local_data_dir = script_dir / "data"
     
-    # Process data
-    summary_df, files_df, pivot_df, combined_df, error = process_bom_data(default_dir)
+    # SharePoint-synced directory (update this path to your local SharePoint sync location)
+    sharepoint_dir = r"C:\Users\Abdullah_Abuzaid\OneDrive - Dell Technologies\Desktop\Hackathon exercise"
+    
+    print("=" * 60)
+    print("L11 Networking Data Processing")
+    print("=" * 60)
+    
+    # Try to sync from SharePoint first
+    print("\nAttempting to sync files from SharePoint...")
+    sync_success = sync_sharepoint_files(sharepoint_dir, local_data_dir)
+    
+    if sync_success:
+        print("SharePoint sync completed successfully")
+        data_dir = local_data_dir
+    else:
+        print("SharePoint sync failed or not configured")
+        print("Using local data directory instead")
+        data_dir = local_data_dir
+    
+    print(f"\nProcessing data from: {data_dir}")
+    
+    # Process the data
+    summary_df, files_df, pivot_df, combined_df, error = process_bom_data(str(data_dir))
     
     if error:
-        print(f"Error: {error}")
+        print(f"❌ Error: {error}")
     else:
         # Generate JSON data
         json_data = generate_json_data(summary_df, files_df, pivot_df, combined_df)
         
         # Save JSON data
-        with open('data.json', 'w') as f:
+        json_file = script_dir / 'data.json'
+        with open(json_file, 'w') as f:
             json.dump(json_data, f, indent=2)
         
+        print("\n" + "=" * 60)
         print("Data processed successfully!")
+        print("=" * 60)
         print(f"Total items: {json_data['total_items']}")
         print(f"Total quantity: {json_data['total_quantity']:,}")
         print(f"Total files: {json_data['total_files']}")
-        print("Data saved to data.json")
+        print(f"Data saved to: {json_file}")
+        print(f"Generated at: {json_data['generated_at']}")
+        print("=" * 60)
+        print("\nNext steps:")
+        print("1. Open index.html in your browser to view the dashboard")
+        print("2. Or share the files with your team")
+        print("3. For updates: re-run this script to sync and process new data")
