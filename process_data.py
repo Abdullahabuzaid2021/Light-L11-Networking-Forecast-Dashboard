@@ -2,40 +2,6 @@ import pandas as pd
 import json
 from pathlib import Path
 from datetime import datetime
-import os
-import shutil
-
-def sync_sharepoint_files(sharepoint_path, local_data_path):
-    """Sync Excel files from SharePoint-synced directory to local data directory"""
-    try:
-        sharepoint_dir = Path(sharepoint_path)
-        local_dir = Path(local_data_path)
-        
-        if not sharepoint_dir.exists():
-            print(f"SharePoint directory not found: {sharepoint_path}")
-            return False
-        
-        # Ensure local data directory exists
-        local_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Copy Excel files from SharePoint to local data directory
-        files_copied = 0
-        for file in sharepoint_dir.glob("*.xlsx"):
-            dest_file = local_dir / file.name
-            shutil.copy2(file, dest_file)
-            files_copied += 1
-            print(f"Synced: {file.name}")
-        
-        if files_copied > 0:
-            print(f"Successfully synced {files_copied} files from SharePoint")
-            return True
-        else:
-            print("No Excel files found in SharePoint directory")
-            return False
-            
-    except Exception as e:
-        print(f"Error syncing SharePoint files: {e}")
-        return False
 
 def process_bom_data(directory):
     """Process all Excel files and aggregate BOM data from PnL SN6600 tabs"""
@@ -200,29 +166,13 @@ if __name__ == "__main__":
     script_dir = Path(__file__).parent.resolve()
     local_data_dir = script_dir / "data"
     
-    # SharePoint-synced directory (update this path to your local SharePoint sync location)
-    sharepoint_dir = r"C:\Users\Abdullah_Abuzaid\OneDrive - Dell Technologies\Desktop\Hackathon exercise"
-    
     print("=" * 60)
     print("L11 Networking Data Processing")
     print("=" * 60)
+    print(f"Using Excel files from repository: {local_data_dir}")
     
-    # Try to sync from SharePoint first
-    print("\nAttempting to sync files from SharePoint...")
-    sync_success = sync_sharepoint_files(sharepoint_dir, local_data_dir)
-    
-    if sync_success:
-        print("SharePoint sync completed successfully")
-        data_dir = local_data_dir
-    else:
-        print("SharePoint sync failed or not configured")
-        print("Using local data directory instead")
-        data_dir = local_data_dir
-    
-    print(f"\nProcessing data from: {data_dir}")
-    
-    # Process the data
-    summary_df, files_df, pivot_df, combined_df, error = process_bom_data(str(data_dir))
+    # Process the data directly from repository
+    summary_df, files_df, pivot_df, combined_df, error = process_bom_data(str(local_data_dir))
     
     if error:
         print(f"❌ Error: {error}")
@@ -246,5 +196,5 @@ if __name__ == "__main__":
         print("=" * 60)
         print("\nNext steps:")
         print("1. Open index.html in your browser to view the dashboard")
-        print("2. Or share the files with your team")
-        print("3. For updates: re-run this script to sync and process new data")
+        print("2. Or share the repository with your team")
+        print("3. For updates: add new Excel files to data/ and re-run this script")

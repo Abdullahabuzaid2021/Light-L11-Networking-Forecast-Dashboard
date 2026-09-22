@@ -4,30 +4,38 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
-- **SharePoint Data Source**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
 - **Local Dashboard**: Open `index.html` in your browser
 - **Data Processing**: Run `python process_data.py`
+- **Data Source**: Excel files in repository `data/` directory
+- **SharePoint Reference**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
 
 ## 🚀 Quick Start
 
-### 1. Process Data (with SharePoint Sync)
+### 1. Process Data
 ```bash
 # Install dependencies
 pip install -r requirements.txt
 
-# Process Excel files - automatically syncs from SharePoint and generates JSON
+# Process Excel files from repository and generate JSON
 python process_data.py
 ```
 
-**SharePoint Integration:**
-- The script automatically syncs Excel files from your SharePoint-synced directory
-- Default SharePoint path: `C:\Users\Abdullah_Abuzaid\OneDrive - Dell Technologies\Desktop\Hackathon exercise`
-- Update the `sharepoint_dir` variable in `process_data.py` if your sync location is different
-- Falls back to local data directory if SharePoint sync fails
+**Data Source:**
+- Uses Excel files directly from the repository `data/` directory
+- No external dependencies or sync required
+- Simple and reliable approach
 
 ### 2. Open Dashboard
-Simply open `index.html` in your web browser - no server required!
+**Option A: Using Local Server (Recommended)**
+```bash
+# Start the local server
+python start_server.py
 
+# The dashboard will open automatically in your browser
+# Or manually open: http://localhost:8000/index.html
+```
+
+**Option B: Direct File Opening**
 ```bash
 # On Windows
 start index.html
@@ -38,6 +46,8 @@ open index.html
 # On Linux
 xdg-open index.html
 ```
+
+**Note**: If you see "Error loading data" when opening directly, use the local server option instead.
 
 ## 📁 Project Structure
 
@@ -95,30 +105,10 @@ L11_Networking_Web_App/
 
 ## 🔧 Configuration
 
-### SharePoint Sync Setup
-The script automatically syncs files from SharePoint. To configure:
-
-1. **Sync SharePoint Folder Locally:**
-   - Use OneDrive or SharePoint sync client
-   - Sync the "Hackathon - L11 forecasting" folder to your local machine
-   - Note the local sync path
-
-2. **Update SharePoint Path:**
-   Edit `process_data.py` and update the `sharepoint_dir` variable:
-   ```python
-   sharepoint_dir = r"your\local\sharepoint\sync\path"
-   ```
-
-3. **Run Processing:**
-   ```bash
-   python process_data.py
-   ```
-   The script will automatically sync files from SharePoint and process them.
-
 ### Data Directory
-- **Primary**: Uses SharePoint-synced files (if configured)
-- **Fallback**: Uses local `data/` directory if SharePoint sync fails
-- **Manual**: Place Excel files directly in `data/` directory
+- **Primary**: Uses Excel files from repository `data/` directory
+- **No external configuration required**
+- **Simple and reliable**
 
 ### Custom Data
 1. Place your Excel files in the `data/` directory
@@ -148,22 +138,17 @@ The script automatically syncs files from SharePoint. To configure:
 
 ## 🔄 Data Refresh Workflow
 
-### Automatic SharePoint Sync
-1. **Update files in SharePoint** (via web interface or sync client)
-2. **Run processing script**: `python process_data.py`
-3. **Script automatically syncs** latest files from SharePoint
-4. **Refresh browser** to see updated data
-
-### Manual Data Update
+### Update Excel Files in Repository
 1. **Add/Update Excel files** in the `data/` directory
 2. **Run processing script**: `python process_data.py`
 3. **Refresh browser** to see updated data
-4. **Share updated files** with team members if needed
+4. **Commit changes** to git repository (optional)
 
 ### Team Sharing
-- Share the entire project folder (including synced data)
-- Team members run `python process_data.py` to sync and process
-- Each user can configure their own SharePoint sync path
+- Share the entire project folder via git repository
+- Team members clone the repository
+- Excel files are included in the repository
+- Each user runs `python process_data.py` to process the data
 
 ## 📋 Requirements
 
