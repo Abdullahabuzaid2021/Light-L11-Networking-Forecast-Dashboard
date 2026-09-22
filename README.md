@@ -4,6 +4,8 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
+- **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
+- **GitHub Pages Dashboard**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/ (after enabling GitHub Pages)
 - **Local Dashboard**: Open `index.html` in your browser
 - **Data Processing**: Run `python process_data.py`
 - **Data Source**: Excel files in repository `data/` directory
@@ -115,7 +117,23 @@ L11_Networking_Web_App/
 2. Run `python process_data.py`
 3. Open `index.html` to view the updated dashboard
 
-## 🌐 Sharing with Team Members
+## 🌐 Team Sharing & Dashboard Link
+
+### **GitHub Pages Dashboard Link (Primary)**
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
+
+**To enable GitHub Pages:**
+1. Go to repository Settings → Pages
+2. Select "GitHub Actions" as Source
+3. Click Save
+4. Wait for automatic deployment (2-3 minutes)
+5. Share the above URL with your team
+
+**Benefits of GitHub Pages:**
+- Permanent shareable link
+- Automatic updates when you push code
+- No server setup required
+- Works for all team members
 
 ### Option 1: Share Files Directly
 1. Zip the entire project folder
