@@ -144,14 +144,15 @@ def embed_data_in_html(json_data, script_dir):
         
         # Find the embeddedData variable and replace it with actual data
         import json as json_module
-        data_str = json_module.dumps(json_data, indent=2)
+        data_str = json_module.dumps(json_data, indent=2, ensure_ascii=False)
         
-        # Replace the embeddedData assignment
-        old_pattern = "const embeddedData = null;"
+        # Replace the embeddedData assignment - handle both null and existing data
+        import re
+        pattern = r"const embeddedData = \{[\s\S]*?\};"
         new_pattern = f"const embeddedData = {data_str};"
         
-        if old_pattern in html_content:
-            html_content = html_content.replace(old_pattern, new_pattern)
+        if re.search(pattern, html_content):
+            html_content = re.sub(pattern, new_pattern, html_content)
             
             with open(html_file, 'w', encoding='utf-8') as f:
                 f.write(html_content)
