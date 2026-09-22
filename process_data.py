@@ -134,6 +134,35 @@ def process_bom_data(directory):
     except Exception as e:
         return None, None, None, None, f"Error processing data: {str(e)}"
 
+def embed_data_in_html(json_data, script_dir):
+    """Embed JSON data directly into HTML file for GitHub Pages reliability"""
+    html_file = script_dir / 'index.html'
+    
+    try:
+        with open(html_file, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        
+        # Find the embeddedData variable and replace it with actual data
+        import json as json_module
+        data_str = json_module.dumps(json_data, indent=2)
+        
+        # Replace the embeddedData assignment
+        old_pattern = "const embeddedData = null;"
+        new_pattern = f"const embeddedData = {data_str};"
+        
+        if old_pattern in html_content:
+            html_content = html_content.replace(old_pattern, new_pattern)
+            
+            with open(html_file, 'w', encoding='utf-8') as f:
+                f.write(html_content)
+            
+            print("Data embedded into index.html for GitHub Pages")
+        else:
+            print("Warning: Could not find embeddedData pattern in HTML")
+            
+    except Exception as e:
+        print(f"Error embedding data in HTML: {e}")
+
 def generate_json_data(summary_df, files_df, pivot_df, combined_df):
     """Convert dataframes to JSON format for web display"""
     # Convert dataframes to records and handle datetime serialization
@@ -198,3 +227,6 @@ if __name__ == "__main__":
         print("1. Open index.html in your browser to view the dashboard")
         print("2. Or share the repository with your team")
         print("3. For updates: add new Excel files to data/ and re-run this script")
+        
+        # Embed data into HTML for GitHub Pages
+        embed_data_in_html(json_data, script_dir)
