@@ -1263,19 +1263,15 @@
             try {
                 document.getElementById('dataStatus').textContent = 'Loading...';
                 
-                // Try to fetch from data.json first
+                // Use embedded data directly for GitHub Pages reliability
                 let data;
-                try {
+                if (embeddedData) {
+                    data = embeddedData;
+                    console.log('Using embedded data');
+                } else {
+                    // Fallback to fetch if embedded data not available
                     const response = await fetch('./data.json');
                     data = await response.json();
-                } catch (fetchError) {
-                    console.log('Fetch failed, using embedded data:', fetchError);
-                    // If fetch fails, use embedded data if available
-                    if (embeddedData) {
-                        data = embeddedData;
-                    } else {
-                        throw new Error('No data available');
-                    }
                 }
                 
                 globalData = data;
