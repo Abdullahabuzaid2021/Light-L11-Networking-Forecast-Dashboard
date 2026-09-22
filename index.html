@@ -2435,6 +2435,7 @@
             } catch (error) {
                 console.error('Error loading embedded data:', error);
                 document.getElementById('dataStatus').textContent = '❌ Error loading data: ' + error.message;
+                console.log('Error details:', error);
             }
         };
     </script>
