@@ -42,6 +42,34 @@
             margin-bottom: 10px;
         }
         
+        .refresh-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .refresh-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .refresh-button:active {
+            transform: translateY(0);
+        }
+        
+        .refresh-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
         .metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -152,6 +180,7 @@
         <div class="header">
             <h1>🌐 L11 Networking Forecast Dashboard</h1>
             <p>Interactive BOM aggregation and analysis for L11 networking components</p>
+            <button onclick="refreshData()" class="refresh-button">🔄 Refresh Data</button>
         </div>
         
         <div class="data-info">
@@ -423,6 +452,47 @@
             
             // Add active class to clicked tab
             event.target.classList.add('active');
+        }
+        
+        async function refreshData() {
+            const refreshButton = document.querySelector('.refresh-button');
+            const dataStatus = document.getElementById('dataStatus');
+            
+            // Disable button and show loading state
+            refreshButton.disabled = true;
+            refreshButton.textContent = '⏳ Refreshing...';
+            dataStatus.textContent = '⏳ Processing data...';
+            
+            try {
+                const response = await fetch('/api/refresh', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Reload the page to get fresh data
+                    dataStatus.textContent = `✅ Data refreshed successfully! ${result.total_items} items, ${result.total_quantity.toLocaleString()} units`;
+                    
+                    // Reload data from data.json
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    dataStatus.textContent = `❌ Refresh failed: ${result.message}`;
+                    console.error('Refresh error:', result);
+                }
+            } catch (error) {
+                dataStatus.textContent = `❌ Refresh error: ${error.message}`;
+                console.error('Refresh error:', error);
+            } finally {
+                // Re-enable button
+                refreshButton.disabled = false;
+                refreshButton.textContent = '🔄 Refresh Data';
+            }
         }
         
         // Load dashboard on page load
