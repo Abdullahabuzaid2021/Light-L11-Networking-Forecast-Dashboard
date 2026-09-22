@@ -1449,7 +1449,21 @@
         }
         
         // Load data on page load
-        window.onload = loadData;
+        window.onload = function() {
+            console.log('Page loaded, embeddedData:', embeddedData);
+            if (embeddedData) {
+                // Use embedded data directly
+                globalData = embeddedData;
+                updateMetrics(embeddedData);
+                updateSummaryTable(embeddedData.summary);
+                updateFilesTable(embeddedData.files);
+                updateBreakdownTable(embeddedData.pivot);
+                updateCharts(embeddedData);
+                document.getElementById('dataStatus').textContent = `✅ Loaded ${embeddedData.total_items} items from ${embeddedData.total_files} files (Updated: ${embeddedData.generated_at})`;
+            } else {
+                loadData(); // Fallback to fetch
+            }
+        };
     </script>
 </body>
 </html>
