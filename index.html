@@ -1451,17 +1451,23 @@
         // Load data on page load
         window.onload = function() {
             console.log('Page loaded, embeddedData:', embeddedData);
-            if (embeddedData) {
-                // Use embedded data directly
-                globalData = embeddedData;
-                updateMetrics(embeddedData);
-                updateSummaryTable(embeddedData.summary);
-                updateFilesTable(embeddedData.files);
-                updateBreakdownTable(embeddedData.pivot);
-                updateCharts(embeddedData);
-                document.getElementById('dataStatus').textContent = `✅ Loaded ${embeddedData.total_items} items from ${embeddedData.total_files} files (Updated: ${embeddedData.generated_at})`;
-            } else {
-                loadData(); // Fallback to fetch
+            try {
+                if (embeddedData && embeddedData.summary) {
+                    // Use embedded data directly
+                    globalData = embeddedData;
+                    updateMetrics(embeddedData);
+                    updateSummaryTable(embeddedData.summary);
+                    updateFilesTable(embeddedData.files);
+                    updateBreakdownTable(embeddedData.pivot);
+                    updateCharts(embeddedData);
+                    document.getElementById('dataStatus').textContent = `✅ Loaded ${embeddedData.total_items} items from ${embeddedData.total_files} files (Updated: ${embeddedData.generated_at})`;
+                } else {
+                    document.getElementById('dataStatus').textContent = '⚠️ No embedded data available';
+                    loadData(); // Fallback to fetch
+                }
+            } catch (error) {
+                console.error('Error loading embedded data:', error);
+                document.getElementById('dataStatus').textContent = '❌ Error loading data: ' + error.message;
             }
         };
     </script>
