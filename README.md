@@ -4,15 +4,21 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
-**Dashboard URL**: http://localhost:8000/index.html (when running local server)
+**Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running local server) - **RECOMMENDED**
 
 **Dell Internal Network URLs** (for team sharing):
-- **Network URL**: http://10.137.51.248:8000 (within Dell network) - **Primary for team sharing**
-- **External URL**: http://143.166.192.16:8000 (if accessible) - **Alternative for broader access**
+- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - **Primary for team sharing**
+- **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible) - **Alternative for broader access**
 
 **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
 
 **SharePoint Data Source**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
+
+## 📚 Documentation
+
+- **[Comprehensive Documentation](COMPREHENSIVE_DOCUMENTATION.md)** - Complete guide with prompts, sample outputs, and code scripts
+- **[Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** - Step-by-step guide for Dell team members to access the dashboard
+- **[Network Testing Script](network_test.py)** - Automated tool to test network connectivity and server accessibility
 
 ## Problem Statement
 
@@ -132,20 +138,21 @@ python start_server.py
 
 ### 🌐 Dell Internal Sharing (Recommended for Team Access)
 The dashboard can be shared with other Dell members via the network URLs:
-- **Network URL**: http://10.137.51.248:8000 (within Dell network) - **Primary for team sharing**
-- **External URL**: http://143.166.192.16:8000 (if accessible) - **Alternative for broader access**
+- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - **Primary for team sharing**
+- **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible) - **Alternative for broader access**
 
 **How to Share:**
 1. Run the dashboard on your machine: `python start_server.py`
-2. Share the Network URL (http://10.137.51.248:8000) with your team
+2. Share the Network URL (http://10.137.51.248:8000/simple_dashboard.html) with your team
 3. Team members can access it directly within the Dell network
 4. No additional server setup required
+5. **See [Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** for detailed team member instructions
 
 ### Local Development
 When running locally, the dashboard is accessible at:
-- **Local URL**: http://localhost:8000 (only on your machine)
-- **Network URL**: http://10.137.51.248:8000 (within Dell network)
-- **External URL**: http://143.166.192.16:8000 (if accessible)
+- **Local URL**: http://localhost:8000/simple_dashboard.html (only on your machine)
+- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network)
+- **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible)
 
 ### Deployment Options
 The dashboard can be deployed for team access through:
@@ -197,13 +204,18 @@ L11_Networking_Web_App/
 ├── data/
 │   ├── Horizon PNL.xlsx
 │   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx
-│   └── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx
-├── index.html
+│   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx
+│   └── total summary BOM per item.xlsx
+├── simple_dashboard.html (RECOMMENDED - simplified dashboard)
+├── index.html (original complex dashboard)
 ├── process_data.py
 ├── start_server.py
+├── network_test.py (network connectivity testing)
 ├── requirements.txt
 ├── data.json
-└── README.md
+├── README.md
+├── COMPREHENSIVE_DOCUMENTATION.md
+└── DELL_TEAM_ACCESS_GUIDE.md
 ```
 
 ### SharePoint Integration
@@ -220,17 +232,21 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 
 1. **Process Data**: Run `python process_data.py` to process Excel files and generate JSON
 2. **Start Dashboard**: Run `python start_server.py` to start the local server
-3. **Query Data**: Use the query section to filter and search for specific items
-4. **Visualize**: View interactive charts and graphs with value labels
-5. **Export**: Download results in JSON format
+3. **Test Network**: Run `python network_test.py` to verify network connectivity for team sharing
+4. **Access Dashboard**: Open http://localhost:8000/simple_dashboard.html in your browser
+5. **Navigate Tabs**: Use Summary, Files, Project Breakdown, and Charts tabs
+6. **Visualize Data**: View interactive charts with value labels
+7. **Share with Team**: Share network URL with Dell team members (see Dell Team Access Guide)
 
 ## Deployment Options for Internal Sharing
 
 ### Option 1: Local Server (Recommended for Dell)
 1. Run: `python start_server.py`
-2. Share the network URL: http://10.137.51.248:8000
-3. Team members access via Dell network
-4. No additional setup required
+2. Test network: `python network_test.py`
+3. Share the network URL: http://10.137.51.248:8000/simple_dashboard.html
+4. Team members access via Dell network
+5. No additional setup required
+6. **See [Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** for team instructions
 
 ### Option 2: Web Server
 1. Upload files to any web server
@@ -264,9 +280,10 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Data Processing**: Python with Pandas
-- **Visualization**: Chart.js
+- **Visualization**: Chart.js with datalabels plugin
 - **File Processing**: OpenPyXL
 - **Server**: Python HTTP server
+- **Network Testing**: Requests library for connectivity testing
 
 ## Support
 
@@ -275,13 +292,15 @@ For issues or questions, contact the development team.
 ## 📱 Dashboard Links
 
 ### Local Access
-- **Primary URL**: http://localhost:8000
-- **Network URL**: http://10.137.51.248:8000 (Dell internal network)
-- **External URL**: http://143.166.192.16:8000 (if accessible)
+- **Primary URL**: http://localhost:8000/simple_dashboard.html (RECOMMENDED)
+- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (Dell internal network)
+- **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible)
 
 ### Repository & Resources
 - **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
 - **SharePoint Data**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
+- **Comprehensive Documentation**: [COMPREHENSIVE_DOCUMENTATION.md](COMPREHENSIVE_DOCUMENTATION.md)
+- **Dell Team Access Guide**: [DELL_TEAM_ACCESS_GUIDE.md](DELL_TEAM_ACCESS_GUIDE.md)
 
 ### Quick Start Commands
 ```bash
@@ -295,9 +314,33 @@ pip install -r requirements.txt
 # Process data
 python process_data.py
 
+# Test network connectivity (for team sharing)
+python network_test.py
+
 # Run the dashboard
 python start_server.py
 
 # Access the dashboard
-# Open http://localhost:8000/index.html in your browser
+# Open http://localhost:8000/simple_dashboard.html in your browser
 ```
+
+## 🆕 New Features
+
+### Enhanced Dashboard (simple_dashboard.html)
+- **Simplified Architecture**: Data embedded directly in HTML for immediate loading
+- **Value Labels**: Charts now display values directly on chart elements
+- **Project Breakdown Tab**: Per-project quantity distribution with totals
+- **Improved Performance**: Faster loading with embedded data
+- **Better Error Handling**: Enhanced logging and debugging capabilities
+
+### Network Testing (network_test.py)
+- **Automated Connectivity Testing**: Tests local server, network IP, and data files
+- **Firewall Diagnostics**: Checks port accessibility and network configuration
+- **Comprehensive Reporting**: Generates detailed access reports for troubleshooting
+- **Dell Network Validation**: Verifies Dell network connectivity for team sharing
+
+### Documentation
+- **Comprehensive Documentation**: Complete guide with prompts, sample outputs, and code scripts
+- **Dell Team Access Guide**: Step-by-step instructions for Dell team members
+- **Troubleshooting Procedures**: Common issues and solutions for network access
+- **Best Practices**: Security considerations and usage guidelines

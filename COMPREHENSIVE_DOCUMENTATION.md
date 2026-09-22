@@ -7,6 +7,8 @@
 4. [Demo Materials and Images](#demo-materials-and-images)
 5. [Code Script](#code-script)
 6. [Dashboard Usage Instructions](#dashboard-usage-instructions)
+7. [Dell Team Access](#dell-team-access)
+8. [Network Testing](#network-testing)
 
 ---
 
@@ -895,8 +897,140 @@ Modify `simple_dashboard.html` to:
 
 ---
 
+## Dell Team Access
+
+### Prerequisites for Dell Team Members
+
+#### Network Requirements
+- **Must be connected to Dell internal network** (amer.dell.com domain)
+- **VPN access** if working remotely
+- **Dell corporate credentials** for network authentication
+- **Firewall permissions** to access port 8000
+
+#### System Requirements
+- **Web browser**: Chrome, Firefox, Edge, or Safari (latest version)
+- **Internet connection**: Stable connection to Dell network
+- **JavaScript enabled**: Required for dashboard functionality
+- **No special software installation needed**
+
+### Access Methods
+
+#### Method 1: Internal Dell Network (Recommended)
+- **URL**: http://10.137.51.248:8000/simple_dashboard.html
+- **Requirements**: Connected to Dell network or VPN
+- **Best for**: Daily use, team collaboration
+
+#### Method 2: GitHub Pages (Alternative)
+- **URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
+- **Requirements**: Internet access (no Dell network needed)
+- **Best for**: External access, sharing with non-Dell partners
+
+### Troubleshooting Access Issues
+
+#### Common Issues
+1. **"Connection Refused"**: Server not running or network firewall blocking
+2. **"Loading Data..."**: Data.json not generated or browser cache issues
+3. **"404 Not Found"**: Incorrect URL path or file not found
+4. **Charts Not Displaying**: Chart.js CDN blocked or JavaScript disabled
+
+#### Solutions
+1. **Test network connectivity**: `ping 10.137.51.248`
+2. **Hard refresh browser**: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+3. **Clear browser cache**: Clear cache and cookies
+4. **Check browser console**: Press F12 to check for JavaScript errors
+5. **Contact dashboard owner**: Verify server status and data processing
+
+### Dell Team Access Guide
+
+For detailed instructions, see [DELL_TEAM_ACCESS_GUIDE.md](DELL_TEAM_ACCESS_GUIDE.md) which includes:
+- Complete setup instructions for Dell team members
+- Network troubleshooting procedures
+- VPN setup for remote users
+- Mobile access guidelines
+- Security considerations
+- Support and contact information
+
+## Network Testing
+
+### Network Test Script
+
+The repository includes `network_test.py` for automated network connectivity testing:
+
+```bash
+python network_test.py
+```
+
+### Test Coverage
+
+The script tests:
+- **Local Server Status**: Verifies dashboard server is running
+- **Network IP Accessibility**: Tests 10.137.51.248:8000 connectivity
+- **Data File Validation**: Checks data.json exists and is valid
+- **Excel Files Presence**: Verifies Excel files in data/ directory
+- **Firewall Rules**: Tests port 8000 accessibility
+
+### Test Results Interpretation
+
+#### PASS Results
+- **[PASS] Local Server**: Dashboard server is running and accessible
+- **[PASS] Network IP**: Network IP is accessible for team sharing
+- **[PASS] Data File**: Data file exists and contains valid data
+- **[PASS] Excel Files**: Excel files found in data/ directory
+- **[PASS] Firewall**: Port 8000 is accessible, no firewall blocking
+
+#### FAIL Results
+- **[FAIL] Local Server**: Start server with `python start_server.py`
+- **[FAIL] Network IP**: Check network connectivity and firewall settings
+- **[FAIL] Data File**: Run `python process_data.py` to generate data
+- **[FAIL] Excel Files**: Add Excel files to data/ directory
+- **[FAIL] Firewall**: Check firewall rules and port availability
+
+### Network Diagnostics
+
+#### Manual Testing Commands
+```bash
+# Test network connectivity
+ping 10.137.51.248
+
+# Test port accessibility
+telnet 10.137.51.248 8000
+
+# Test HTTP access
+curl http://10.137.51.248:8000/
+
+# Check network configuration
+ipconfig /all
+```
+
+#### Browser Testing
+1. Open browser
+2. Navigate to: http://10.137.51.248:8000/simple_dashboard.html
+3. Check if dashboard loads correctly
+4. Open browser console (F12) to check for errors
+
+### Access Report
+
+The network test script generates a comprehensive access report including:
+- **Local IP**: Your machine's IP address
+- **Network IP**: 10.137.51.248 for Dell team sharing
+- **Port**: 8000 for dashboard access
+- **Access URLs**: All available URLs for dashboard access
+- **Dell Team Requirements**: Prerequisites for team members
+
 ## Conclusion
 
 This comprehensive documentation provides all necessary information for setting up, using, and maintaining the L11 Networking Web App. The application successfully processes Excel files from the repository, aggregates networking BOM data, and provides an interactive dashboard for analysis and team collaboration within Dell's environment.
 
-For questions or issues, please refer to the troubleshooting section or contact the development team.
+### Key Features
+- **Automated Data Processing**: Processes Excel files from repository
+- **Interactive Dashboard**: HTML/JavaScript with embedded data
+- **Dell Network Sharing**: Configured for internal team access
+- **Network Testing**: Automated connectivity verification
+- **Comprehensive Documentation**: Complete guides for all users
+
+### Team Sharing
+- **Dell Internal Network**: http://10.137.51.248:8000/simple_dashboard.html
+- **GitHub Pages**: Available for external access
+- **Complete Documentation**: Guides for team members and administrators
+
+For questions or issues, please refer to the troubleshooting section, Dell Team Access Guide, or contact the development team.
