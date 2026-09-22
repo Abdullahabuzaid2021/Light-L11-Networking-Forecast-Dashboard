@@ -36,8 +36,8 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Generated data
-data.json
-
 # Keep sample Excel files
 !data/*.xlsx
+
+# Include data.json for GitHub Pages deployment
+!data.json
