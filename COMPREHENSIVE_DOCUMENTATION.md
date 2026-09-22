@@ -39,13 +39,17 @@ L11_Networking_Web_App/
 ├── data/                          # Excel files directory
 │   ├── Horizon PNL.xlsx
 │   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx
-│   └── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx
-├── index.html                     # Original dashboard (complex)
+│   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx
+│   └── total summary BOM per item.xlsx
 ├── simple_dashboard.html          # Simplified dashboard (recommended)
+├── refresh_server.py              # Flask server with refresh API (recommended)
+├── start_server.py                # Simple HTTP server (alternative)
 ├── process_data.py                # Python data processing script
-├── start_server.py                # HTTP server starter
+├── network_test.py                # Network connectivity testing
 ├── requirements.txt               # Python dependencies
 ├── README.md                      # Project documentation
+├── COMPREHENSIVE_DOCUMENTATION.md # Complete documentation
+├── DELL_TEAM_ACCESS_GUIDE.md     # Dell team member guide
 └── data.json                      # Generated data file
 ```
 

@@ -4,7 +4,7 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
-**Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running local server) - **RECOMMENDED**
+**Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running Flask server)
 
 **Dell Internal Network URLs** (for team sharing):
 - **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - **Primary for team sharing**
@@ -13,6 +13,8 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
 
 **SharePoint Data Source**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
+
+**Server Type**: Flask server with refresh API (recommended)
 
 ## 📚 Documentation
 
@@ -129,7 +131,12 @@ pip install -r requirements.txt
 python process_data.py
 ```
 
-3. Run the dashboard:
+3. Run the dashboard with Flask server (recommended):
+```bash
+python refresh_server.py
+```
+
+Alternative: Run with simple HTTP server:
 ```bash
 python start_server.py
 ```
@@ -176,8 +183,8 @@ The dashboard can be deployed for team access through:
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
 3. Process data: `python process_data.py`
-4. Run dashboard: `python start_server.py`
-5. Access at http://localhost:8000/index.html
+4. Run dashboard: `python refresh_server.py` (recommended) or `python start_server.py` (alternative)
+5. Access at http://localhost:8000/simple_dashboard.html
 
 ## Configuration
 
@@ -231,38 +238,40 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 ## Usage
 
 1. **Process Data**: Run `python process_data.py` to process Excel files and generate JSON
-2. **Start Dashboard**: Run `python start_server.py` to start the local server
+2. **Start Dashboard**: Run `python refresh_server.py` to start the Flask server with refresh API
 3. **Test Network**: Run `python network_test.py` to verify network connectivity for team sharing
 4. **Access Dashboard**: Open http://localhost:8000/simple_dashboard.html in your browser
-5. **Navigate Tabs**: Use Summary, Files, Project Breakdown, and Charts tabs
-6. **Visualize Data**: View interactive charts with value labels
-7. **Share with Team**: Share network URL with Dell team members (see Dell Team Access Guide)
+5. **Refresh Data**: Click the "🔄 Refresh Data" button to process new Excel files
+6. **Navigate Tabs**: Use Summary, Files, Project Breakdown, and Charts tabs
+7. **Visualize Data**: View interactive charts with value labels
+8. **Share with Team**: Share network URL with Dell team members (see Dell Team Access Guide)
 
 ## Deployment Options for Internal Sharing
 
-### Option 1: Local Server (Recommended for Dell)
-1. Run: `python start_server.py`
+### Option 1: Flask Server with Refresh API (Recommended for Dell)
+1. Run: `python refresh_server.py`
 2. Test network: `python network_test.py`
 3. Share the network URL: http://10.137.51.248:8000/simple_dashboard.html
-4. Team members access via Dell network
+4. Team members can refresh data by clicking the refresh button
 5. No additional setup required
 6. **See [Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** for team instructions
 
-### Option 2: Web Server
+### Option 2: Simple HTTP Server
+1. Run: `python start_server.py`
+2. Share the network URL: http://10.137.51.248:8000/simple_dashboard.html
+3. Team members access via Dell network
+4. Note: No refresh functionality with this option
+
+### Option 3: Web Server
 1. Upload files to any web server
 2. Share the server URL
 3. No special configuration needed
 
-### Option 3: GitHub Pages
+### Option 4: GitHub Pages
 1. Push code to GitHub repository
 2. Enable GitHub Pages
 3. Share the GitHub Pages URL
 4. Automatic deployment on push
-
-### Option 4: Local Execution
-1. Share the project folder
-2. Team members run `python start_server.py`
-3. Each user needs access to Excel files
 
 ## Future Enhancements
 
@@ -317,7 +326,10 @@ python process_data.py
 # Test network connectivity (for team sharing)
 python network_test.py
 
-# Run the dashboard
+# Run the dashboard (recommended - with refresh functionality)
+python refresh_server.py
+
+# Alternative: Simple HTTP server (no refresh)
 python start_server.py
 
 # Access the dashboard
@@ -332,6 +344,13 @@ python start_server.py
 - **Project Breakdown Tab**: Per-project quantity distribution with totals
 - **Improved Performance**: Faster loading with embedded data
 - **Better Error Handling**: Enhanced logging and debugging capabilities
+
+### Flask Server with Refresh API (refresh_server.py)
+- **Refresh Button**: One-click data refresh functionality
+- **API Endpoint**: POST `/api/refresh` for triggering data processing
+- **Network Access**: Configured for Dell internal network sharing
+- **Automatic Updates**: Dashboard auto-reloads after successful refresh
+- **Error Handling**: Comprehensive error messages and user feedback
 
 ### Network Testing (network_test.py)
 - **Automated Connectivity Testing**: Tests local server, network IP, and data files
