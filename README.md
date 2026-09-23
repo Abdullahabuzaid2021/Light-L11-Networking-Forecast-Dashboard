@@ -23,6 +23,10 @@ https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/si
 
 - **[Comprehensive Documentation](COMPREHENSIVE_DOCUMENTATION.md)** - Complete guide with prompts, sample outputs, and code scripts
 - **[Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** - Step-by-step guide for Dell team members to access the dashboard
+- **[Prompts and Instructions](PROMPTS.md)** - Development prompts, templates, and usage instructions
+- **[Sample Outputs](SAMPLE_OUTPUTS.md)** - Example outputs, reports, and analysis results
+- **[Demo Materials](DEMO_MATERIALS.md)** - Screenshots, videos, and presentation slides for showcase
+- **[Usage Instructions](USAGE_INSTRUCTIONS.md)** - Step-by-step guide on how to use and adapt the solution
 - **[Network Testing Script](network_test.py)** - Automated tool to test network connectivity and server accessibility
 
 ## Problem Statement
@@ -145,6 +149,33 @@ python start_server.py
 ```
 
 ## Dashboard Access
+
+### Repository Structure
+```
+L11_Networking_Web_App/
+├── data/                              # Excel files directory
+│   ├── Horizon PNL.xlsx
+│   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_CORE.xlsx
+│   ├── P&L -IREN - 50MW 252 Racks - Sweetwater VR NVL72_SN6600-LD_DH.xlsx
+│   └── total summary BOM per item.xlsx
+├── simple_dashboard.html              # Simplified dashboard (recommended)
+├── refresh_server.py                  # Flask server with refresh API (recommended)
+├── refresh_server_8080.py             # Alternative server on port 8080
+├── refresh_server_80.py               # Alternative server on port 80
+├── start_server.py                    # Simple HTTP server (alternative)
+├── process_data.py                    # Python data processing script
+├── network_test.py                    # Network connectivity testing
+├── requirements.txt                   # Python dependencies
+├── .nojekyll                         # Disables Jekyll for GitHub Pages
+├── README.md                          # Project documentation
+├── COMPREHENSIVE_DOCUMENTATION.md     # Complete documentation
+├── DELL_TEAM_ACCESS_GUIDE.md         # Dell team member guide
+├── PROMPTS.md                        # Development prompts and instructions
+├── SAMPLE_OUTPUTS.md                 # Example outputs and reports
+├── DEMO_MATERIALS.md                 # Demo materials and scripts
+├── USAGE_INSTRUCTIONS.md             # Step-by-step usage guide
+└── data.json                         # Generated data file
+```
 
 ### 🌐 Dell Internal Sharing (Recommended for Team Access)
 The dashboard can be shared with other Dell members via the network URLs:
