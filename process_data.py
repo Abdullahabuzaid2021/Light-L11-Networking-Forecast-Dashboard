@@ -136,20 +136,20 @@ def process_bom_data(directory):
 
 def embed_data_in_html(json_data, script_dir):
     """Embed JSON data directly into HTML file for GitHub Pages reliability"""
-    html_file = script_dir / 'index.html'
+    html_file = script_dir / 'simple_dashboard.html'
     
     try:
         with open(html_file, 'r', encoding='utf-8') as f:
             html_content = f.read()
         
-        # Find the embeddedData variable and replace it with actual data
+        # Find the dashboardData variable and replace it with actual data
         import json as json_module
         data_str = json_module.dumps(json_data, indent=2, ensure_ascii=False)
         
-        # Replace the embeddedData assignment - handle both null and existing data
+        # Replace the dashboardData assignment - handle both null and existing data
         import re
-        pattern = r"const embeddedData = \{[\s\S]*?\};"
-        new_pattern = f"const embeddedData = {data_str};"
+        pattern = r"const dashboardData = \{[\s\S]*?\};"
+        new_pattern = f"const dashboardData = {data_str};"
         
         if re.search(pattern, html_content):
             html_content = re.sub(pattern, new_pattern, html_content)
@@ -157,9 +157,9 @@ def embed_data_in_html(json_data, script_dir):
             with open(html_file, 'w', encoding='utf-8') as f:
                 f.write(html_content)
             
-            print("Data embedded into index.html for GitHub Pages")
+            print("Data embedded into simple_dashboard.html for GitHub Pages")
         else:
-            print("Warning: Could not find embeddedData pattern in HTML")
+            print("Warning: Could not find dashboardData pattern in HTML")
             
     except Exception as e:
         print(f"Error embedding data in HTML: {e}")
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         print(f"Generated at: {json_data['generated_at']}")
         print("=" * 60)
         print("\nNext steps:")
-        print("1. Open index.html in your browser to view the dashboard")
+        print("1. Open simple_dashboard.html in your browser to view the dashboard")
         print("2. Or share the repository with your team")
         print("3. For updates: add new Excel files to data/ and re-run this script")
         
