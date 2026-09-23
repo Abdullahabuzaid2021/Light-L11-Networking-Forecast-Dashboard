@@ -43,10 +43,13 @@ L11_Networking_Web_App/
 │   └── total summary BOM per item.xlsx
 ├── simple_dashboard.html          # Simplified dashboard (recommended)
 ├── refresh_server.py              # Flask server with refresh API (recommended)
+├── refresh_server_8080.py         # Alternative server on port 8080
+├── refresh_server_80.py           # Alternative server on port 80
 ├── start_server.py                # Simple HTTP server (alternative)
 ├── process_data.py                # Python data processing script
 ├── network_test.py                # Network connectivity testing
 ├── requirements.txt               # Python dependencies
+├── .nojekyll                     # Disables Jekyll for GitHub Pages
 ├── README.md                      # Project documentation
 ├── COMPREHENSIVE_DOCUMENTATION.md # Complete documentation
 ├── DELL_TEAM_ACCESS_GUIDE.md     # Dell team member guide
@@ -903,46 +906,58 @@ Modify `simple_dashboard.html` to:
 
 ## Dell Team Access
 
-### Prerequisites for Dell Team Members
+### Primary Access Method: GitHub Pages (RECOMMENDED)
 
-#### Network Requirements
-- **Must be connected to Dell internal network** (amer.dell.com domain)
-- **VPN access** if working remotely
-- **Dell corporate credentials** for network authentication
-- **Firewall permissions** to access port 8000
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+
+#### Advantages
+- ✅ **No admin rights required**
+- ✅ **No network restrictions** - works globally
+- ✅ **No software installation needed**
+- ✅ **Automatic deployment** on git push
+- ✅ **Permanent URL** - always available
+- ✅ **No firewall configuration** needed
 
 #### System Requirements
 - **Web browser**: Chrome, Firefox, Edge, or Safari (latest version)
-- **Internet connection**: Stable connection to Dell network
+- **Internet connection**: Any internet connection
 - **JavaScript enabled**: Required for dashboard functionality
-- **No special software installation needed**
+- **No special software**: No installation needed
 
-### Access Methods
+#### How to Access
+1. **Open web browser**
+2. **Navigate to**: GitHub Pages URL above
+3. **Dashboard loads** automatically
+4. **Use all features** immediately
 
-#### Method 1: Internal Dell Network (Recommended)
-- **URL**: http://10.137.51.248:8000/simple_dashboard.html
-- **Requirements**: Connected to Dell network or VPN
-- **Best for**: Daily use, team collaboration
+### Alternative: Dell Internal Network Access
 
-#### Method 2: GitHub Pages (Alternative)
-- **URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
-- **Requirements**: Internet access (no Dell network needed)
-- **Best for**: External access, sharing with non-Dell partners
+**Network URL**: http://10.137.51.248:8000/simple_dashboard.html
+**Alternative Port**: http://10.137.51.248:8080/simple_dashboard.html
 
-### Troubleshooting Access Issues
+#### Prerequisites
+- **Must be connected to Dell internal network** (amer.dell.com domain)
+- **VPN access** if working remotely
+- **Dell corporate credentials** for network authentication
+- **Firewall permissions** to access port 8000 or 8080
+- **Admin rights** may be required to configure Windows Firewall
+
+#### Important Note
+Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, use GitHub Pages as the primary method to avoid firewall issues.
+
+### Troubleshooting GitHub Pages Access
 
 #### Common Issues
-1. **"Connection Refused"**: Server not running or network firewall blocking
-2. **"Loading Data..."**: Data.json not generated or browser cache issues
-3. **"404 Not Found"**: Incorrect URL path or file not found
-4. **Charts Not Displaying**: Chart.js CDN blocked or JavaScript disabled
+1. **"404 Not Found"**: Wait 2-3 minutes for deployment, verify URL
+2. **"Loading Data..."**: Hard refresh (Ctrl+Shift+R), clear browser cache
+3. **Charts Not Displaying**: Enable JavaScript, try different browser
+4. **Deployment Errors**: Check Actions tab in GitHub repository
 
 #### Solutions
-1. **Test network connectivity**: `ping 10.137.51.248`
-2. **Hard refresh browser**: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
-3. **Clear browser cache**: Clear cache and cookies
-4. **Check browser console**: Press F12 to check for JavaScript errors
-5. **Contact dashboard owner**: Verify server status and data processing
+1. **Hard refresh**: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+2. **Clear browser cache**: Clear cache and cookies
+3. **Check browser console**: Press F12 to check for JavaScript errors
+4. **Contact dashboard owner**: Verify data was processed and committed
 
 ### Dell Team Access Guide
 

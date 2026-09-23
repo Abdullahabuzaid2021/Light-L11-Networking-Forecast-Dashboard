@@ -1,61 +1,77 @@
 # Dell Team Access Guide - L11 Networking Dashboard
 
 ## 🎯 Overview
-This guide provides Dell team members with the requirements and steps to access the L11 Networking Forecast Dashboard via the internal Dell network.
+This guide provides Dell team members with the requirements and steps to access the L11 Networking Forecast Dashboard.
+
+## 🌐 Primary Access Method: GitHub Pages (RECOMMENDED)
+
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+
+### **Advantages of GitHub Pages:**
+- ✅ **No admin rights required**
+- ✅ **No network restrictions** - works from anywhere
+- ✅ **No software installation needed**
+- ✅ **Automatic updates** when code is pushed to GitHub
+- ✅ **Permanent URL** - always available
+- ✅ **Global access** - no Dell network needed
+
+### **How to Access:**
+1. **Open web browser** (Chrome, Firefox, Edge, Safari)
+2. **Navigate to**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+3. **Dashboard loads** automatically with embedded data
+4. **Use all features** immediately
+
+### **System Requirements:**
+- **Web browser**: Chrome, Firefox, Edge, or Safari (latest version)
+- **Internet connection**: Any internet connection
+- **JavaScript enabled**: Required for dashboard functionality
+- **No special software**: No installation needed
 
 ---
 
-## 📋 Prerequisites for Dell Team Members
+## 🏢 Alternative: Dell Internal Network Access
 
-### 1. Network Requirements
+**Network URL**: http://10.137.51.248:8000/simple_dashboard.html
+**Alternative Port**: http://10.137.51.248:8080/simple_dashboard.html
+
+### **Prerequisites for Dell Network Access:**
+
+#### 1. Network Requirements
 - **Must be connected to Dell internal network** (amer.dell.com domain)
 - **VPN access** if working remotely
 - **Dell corporate credentials** for network authentication
-- **Firewall permissions** to access port 8000
+- **Firewall permissions** to access port 8000 or 8080
 
-### 2. System Requirements
+#### 2. System Requirements
 - **Web browser**: Chrome, Firefox, Edge, or Safari (latest version)
 - **Internet connection**: Stable connection to Dell network
 - **JavaScript enabled**: Required for dashboard functionality
 - **No special software installation needed**
 
-### 3. Access Methods
-
-#### Method 1: Internal Dell Network (Recommended)
-- **URL**: http://10.137.51.248:8000/simple_dashboard.html
-- **Requirements**: Connected to Dell network or VPN
-- **Best for**: Daily use, team collaboration
-
-#### Method 2: GitHub Pages (Alternative)
-- **URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
-- **Requirements**: Internet access (no Dell network needed)
-- **Best for**: External access, sharing with non-Dell partners
-
-#### Method 3: Direct File Sharing
-- **Requirements**: Download repository files
-- **Best for**: Offline access, local development
+### **Important Note:**
+Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, the dashboard owner may need admin rights to configure Windows Firewall. Use GitHub Pages as the primary method to avoid firewall issues.
 
 ---
 
-## 🔧 Troubleshooting Network Access
+## 🔧 Troubleshooting Access Issues
 
-### Common Issues and Solutions
+### GitHub Pages Access Issues
 
-#### Issue 1: "Connection Refused" or "Cannot Connect"
+#### Issue 1: "404 Not Found" Error
 **Possible Causes:**
-- Dashboard server not running
-- Incorrect IP address
-- Network firewall blocking connection
+- GitHub Pages deployment not completed
+- Incorrect URL
+- Repository not public
 
 **Solutions:**
-1. **Verify server is running**: Contact dashboard owner to confirm server status
-2. **Check IP address**: Ensure using correct IP: http://10.137.51.248:8000/simple_dashboard.html
-3. **Network connectivity**: Test with `ping 10.137.51.248` in command prompt
-4. **VPN connection**: If remote, ensure VPN is connected to Dell network
+1. **Wait 2-3 minutes** after git push for deployment
+2. **Verify URL**: Ensure using the correct GitHub Pages URL
+3. **Check repository**: Ensure repository is public
+4. **Check Actions tab**: Verify deployment workflow completed successfully
 
 #### Issue 2: "Loading Data..." Message
 **Possible Causes:**
-- Data.json file not generated
+- Data not embedded in HTML
 - Browser cache issues
 - JavaScript errors
 
@@ -63,20 +79,9 @@ This guide provides Dell team members with the requirements and steps to access 
 1. **Hard refresh**: Press Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
 2. **Clear browser cache**: Clear cache and cookies
 3. **Check browser console**: Press F12 to check for JavaScript errors
-4. **Contact dashboard owner**: Verify data processing was completed
+4. **Contact dashboard owner**: Verify data was processed and committed
 
-#### Issue 3: "404 Not Found" Error
-**Possible Causes:**
-- Incorrect URL path
-- File not found on server
-- Server misconfiguration
-
-**Solutions:**
-1. **Verify URL**: Ensure using http://10.137.51.248:8000/simple_dashboard.html
-2. **Check file path**: Confirm simple_dashboard.html exists on server
-3. **Try root URL**: Test http://10.137.51.248:8000/ first
-
-#### Issue 4: Charts Not Displaying
+#### Issue 3: Charts Not Displaying
 **Possible Causes:**
 - Chart.js CDN blocked
 - JavaScript disabled
@@ -87,6 +92,21 @@ This guide provides Dell team members with the requirements and steps to access 
 2. **Try different browser**: Test with Chrome or Firefox
 3. **Check internet connection**: Chart.js requires CDN access
 4. **Update browser**: Ensure using latest browser version
+
+### Dell Network Access Issues
+
+#### Issue 1: "Connection Refused" or "Cannot Connect"
+**Possible Causes:**
+- Dashboard server not running
+- Firewall blocking connection
+- Incorrect IP address
+
+**Solutions:**
+1. **Verify server is running**: Contact dashboard owner to confirm server status
+2. **Check IP address**: Ensure using correct IP: http://10.137.51.248:8000/simple_dashboard.html
+3. **Network connectivity**: Test with `ping 10.137.51.248` in command prompt
+4. **VPN connection**: If remote, ensure VPN is connected to Dell network
+5. **Use GitHub Pages**: Recommended alternative that doesn't require network access
 
 ---
 
@@ -216,13 +236,16 @@ If server-side issues are suspected:
 - **Email**: [Your Dell email]
 - **Teams**: [Your Teams contact]
 
+### GitHub Pages Support
+- **GitHub Issues**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/issues
+- **GitHub Documentation**: https://docs.github.com/en/pages
+
 ### Secondary Support
 - **Dell IT Help Desk**: For network/VPN issues
 - **Networking L11 Team**: For data-related questions
-- **GitHub Issues**: For technical bugs and feature requests
 
 ### Emergency Contacts
-- **Server down**: Contact dashboard owner immediately
+- **GitHub Pages down**: Check GitHub Status page
 - **Data access issues**: Contact Networking L11 team
 - **Network problems**: Contact Dell IT Help Desk
 

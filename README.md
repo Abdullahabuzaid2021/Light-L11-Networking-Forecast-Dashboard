@@ -4,17 +4,20 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
-**Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running Flask server)
+**GitHub Pages URL (RECOMMENDED - No Admin Rights Required)**: 
+https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
 
-**Dell Internal Network URLs** (for team sharing):
-- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - **Primary for team sharing**
-- **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible) - **Alternative for broader access**
+**Local Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running Flask server)
+
+**Dell Internal Network URLs** (for team sharing - requires admin rights for firewall):
+- **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - Requires firewall configuration
+- **Alternative Port**: http://10.137.51.248:8080/simple_dashboard.html (if port 8000 blocked) - Requires firewall configuration
 
 **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
 
 **SharePoint Data Source**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
 
-**Server Type**: Flask server with refresh API (recommended)
+**Server Type**: Flask server with refresh API (for local development)
 
 ## 📚 Documentation
 
@@ -246,32 +249,36 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 7. **Visualize Data**: View interactive charts with value labels
 8. **Share with Team**: Share network URL with Dell team members (see Dell Team Access Guide)
 
-## Deployment Options for Internal Sharing
+## Deployment Options for Team Sharing
 
-### Option 1: Flask Server with Refresh API (Recommended for Dell)
+### Option 1: GitHub Pages (RECOMMENDED - No Admin Rights Required)
+1. **Already configured** with `.nojekyll` file for static HTML serving
+2. **Automatic deployment** on git push
+3. **No server setup** required
+4. **Works globally** - no Dell network needed
+5. **Permanent URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+6. **To update**: Process data, commit changes, push to GitHub
+
+### Option 2: Flask Server with Refresh API (Local Development)
 1. Run: `python refresh_server.py`
 2. Test network: `python network_test.py`
 3. Share the network URL: http://10.137.51.248:8000/simple_dashboard.html
-4. Team members can refresh data by clicking the refresh button
-5. No additional setup required
+4. **Requires admin rights** to configure Windows Firewall
+5. Team members can refresh data by clicking the refresh button
 6. **See [Dell Team Access Guide](DELL_TEAM_ACCESS_GUIDE.md)** for team instructions
 
-### Option 2: Simple HTTP Server
-1. Run: `python start_server.py`
-2. Share the network URL: http://10.137.51.248:8000/simple_dashboard.html
-3. Team members access via Dell network
-4. Note: No refresh functionality with this option
+### Option 3: Alternative Port (If Firewall Blocks Port 8000)
+1. Run: `python refresh_server_8080.py`
+2. Share: http://10.137.51.248:8080/simple_dashboard.html
+3. **May still require firewall configuration**
+4. **Less reliable** than GitHub Pages
 
-### Option 3: Web Server
-1. Upload files to any web server
-2. Share the server URL
-3. No special configuration needed
-
-### Option 4: GitHub Pages
-1. Push code to GitHub repository
-2. Enable GitHub Pages
-3. Share the GitHub Pages URL
-4. Automatic deployment on push
+### Option 4: Dell Internal Web Server (Contact IT)
+1. Contact Dell IT Help Desk
+2. Request web server space for dashboard
+3. Upload files to internal server
+4. Get permanent internal URL
+5. **Best for corporate deployment**
 
 ## Future Enhancements
 
