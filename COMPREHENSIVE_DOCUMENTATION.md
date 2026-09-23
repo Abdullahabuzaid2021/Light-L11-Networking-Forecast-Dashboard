@@ -402,7 +402,10 @@ Browser Visualization
 
 ## Code Script
 
-### process_data.py
+### Data Processing Script (process_data.py)
+
+This is the main Python script that processes Excel files before dashboard visualization:
+
 ```python
 #!/usr/bin/env python3
 """
@@ -415,97 +418,166 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-def process_excel_files(data_dir):
-    """Process all Excel files in the data directory"""
+def process_bom_data(directory):
+    """Process all Excel files and aggregate BOM data from PnL SN6600 tabs"""
     all_data = []
     file_info = []
     
-    excel_files = list(data_dir.glob("*.xlsx"))
-    print(f"Found {len(excel_files)} Excel files")
-    
-    for file in excel_files:
-        try:
-            print(f"Processing: {file.name}")
-            df = pd.read_excel(file)
+    try:
+        dir_path = Path(directory)
+        if not dir_path.exists():
+            return None, None, "Directory not found"
+        
+        # Iterate through all Excel files in the directory
+        for file_path in dir_path.glob('*.xlsx'):
+            file_name = file_path.name
+            file_modified = datetime.fromtimestamp(file_path.stat().st_mtime)
             
-            # Look for PnL SN6600 tabs
-            pnl_tabs = [col for col in df.columns if 'PnL' in str(col) or 'SN6600' in str(col)]
-            
-            if pnl_tabs:
-                # Extract relevant columns
-                relevant_cols = ['Networking', 'Model/PN', 'Units']
-                available_cols = [col for col in relevant_cols if col in df.columns]
+            # Load the Excel file
+            try:
+                xl = pd.ExcelFile(file_path)
                 
-                if available_cols:
-                    df_filtered = df[available_cols].copy()
-                    df_filtered['Source File'] = file.name
-                    df_filtered['File Modified'] = datetime.fromtimestamp(file.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')
+                # Find tabs that include "PnL SN6600" in their name
+                pnl_tabs = [sheet for sheet in xl.sheet_names if 'PnL SN6600' in sheet]
+                
+                for tab_name in pnl_tabs:
+                    # Read the tab with no header to find the header row
+                    df = pd.read_excel(file_path, sheet_name=tab_name, header=None)
                     
-                    all_data.append(df_filtered)
+                    # Find the header row (row containing 'Model/PN')
+                    header_row = None
+                    for idx, row in df.iterrows():
+                        if 'Model/PN' in row.values:
+                            header_row = idx
+                            break
                     
-                    file_info.append({
-                        'File': file.name,
-                        'Tab': pnl_tabs[0] if pnl_tabs else 'Unknown',
-                        'Items': len(df_filtered),
-                        'Modified': datetime.fromtimestamp(file.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')
-                    })
-                    
-                    print(f"  - Extracted {len(df_filtered)} items")
-        except Exception as e:
-            print(f"Error processing {file.name}: {e}")
-    
-    if all_data:
-        combined_df = pd.concat(all_data, ignore_index=True)
-        return combined_df, file_info
-    return None, []
+                    if header_row is not None:
+                        # Read the data with the correct header
+                        df = pd.read_excel(file_path, sheet_name=tab_name, header=header_row)
+                        
+                        # Extract relevant columns
+                        if 'Model/PN' in df.columns and 'Units' in df.columns:
+                            # Add source file and tab information
+                            df['Source File'] = file_name
+                            df['Source Tab'] = tab_name
+                            df['File Modified'] = file_modified
+                            
+                            # Add Networking column if it doesn't exist
+                            if 'Networking' not in df.columns:
+                                df['Networking'] = 'N/A'
+                            
+                            # Select only the columns we need
+                            relevant_data = df[['Networking', 'Model/PN', 'Units', 'Source File', 'Source Tab', 'File Modified']].copy()
+                            
+                            # Remove rows where Model/PN is NaN
+                            relevant_data = relevant_data[relevant_data['Model/PN'].notna()]
+                            
+                            # Convert Units to numeric, coerce errors to NaN
+                            relevant_data['Units'] = pd.to_numeric(relevant_data['Units'], errors='coerce')
+                            
+                            # Remove rows where Units is NaN or 0
+                            relevant_data = relevant_data[relevant_data['Units'].notna()]
+                            relevant_data = relevant_data[relevant_data['Units'] != 0]
+                            
+                            # Filter out summary sections
+                            summary_keywords = ['Total Data Hall', 'Total Core', 'Total Horizon', 
+                                             'Data Hall E-W', 'Data Hall N-S', 'Data Hall OOB', 
+                                             'Core E-W', 'Core N-S', 'Core OOB', 'Rack Integration']
+                            relevant_data = relevant_data[~relevant_data['Model/PN'].isin(summary_keywords)]
+                            relevant_data = relevant_data[~relevant_data['Model/PN'].str.startswith('Total ', na=False)]
+                            
+                            all_data.append(relevant_data)
+                            file_info.append({
+                                'File': file_name,
+                                'Tab': tab_name,
+                                'Items': len(relevant_data),
+                                'Modified': file_modified.strftime('%Y-%m-%d %H:%M:%S')
+                            })
+            
+            except Exception as e:
+                print(f"Error processing {file_name}: {e}")
+                continue
+        
+        if all_data:
+            # Combine all data
+            combined_df = pd.concat(all_data, ignore_index=True)
+            
+            # Ensure proper data types
+            combined_df['Model/PN'] = combined_df['Model/PN'].astype(str)
+            combined_df['Networking'] = combined_df['Networking'].astype(str)
+            combined_df['Source File'] = combined_df['Source File'].astype(str)
+            
+            # Aggregate by Model/PN - sum the Units and get the Networking value
+            summary_df = combined_df.groupby('Model/PN').agg({
+                'Networking': 'first',
+                'Units': 'sum'
+            }).reset_index()
+            
+            # Filter out items with total Units = 0
+            summary_df = summary_df[summary_df['Units'] != 0]
+            
+            # Sort by Units descending
+            summary_df = summary_df.sort_values('Units', ascending=False)
+            
+            # Reorder columns: Networking, Model/PN, Units
+            summary_df = summary_df[['Networking', 'Model/PN', 'Units']]
+            
+            # Create file info dataframe
+            files_df = pd.DataFrame(file_info)
+            
+            # Create pivot table for project breakdown
+            pivot_df = combined_df.pivot_table(
+                index='Model/PN',
+                columns='Source File',
+                values='Units',
+                aggfunc='sum',
+                fill_value=0
+            )
+            
+            # Add total column
+            pivot_df['Total'] = pivot_df.sum(axis=1)
+            
+            # Sort by total descending
+            pivot_df = pivot_df.sort_values('Total', ascending=False)
+            
+            # Add Networking description back to the pivot table
+            networking_map = combined_df.drop_duplicates('Model/PN').set_index('Model/PN')['Networking'].to_dict()
+            pivot_df.insert(0, 'Networking', pivot_df.index.map(networking_map))
+            
+            return summary_df, files_df, pivot_df, combined_df, None
+        else:
+            return None, None, None, None, "No PnL SN6600 tabs found in any files"
+            
+    except Exception as e:
+        return None, None, None, None, f"Error processing data: {str(e)}"
 
-def aggregate_data(df):
-    """Aggregate data by Model/PN"""
-    if df is None:
-        return None
+def generate_json_data(summary_df, files_df, pivot_df, combined_df):
+    """Convert dataframes to JSON format for web display"""
+    # Convert dataframes to records and handle datetime serialization
+    summary_records = summary_df.to_dict('records')
+    files_records = files_df.to_dict('records') if files_df is not None else []
+    pivot_records = pivot_df.to_dict('records') if pivot_df is not None else []
     
-    # Aggregate by Model/PN
-    summary = df.groupby(['Networking', 'Model/PN'])['Units'].sum().reset_index()
-    summary = summary.sort_values('Units', ascending=False)
+    # Convert any datetime objects to strings in combined data
+    combined_records = []
+    for record in combined_df.to_dict('records'):
+        record_copy = record.copy()
+        for key, value in record_copy.items():
+            if hasattr(value, 'strftime'):  # Check if it's a datetime object
+                record_copy[key] = value.strftime('%Y-%m-%d %H:%M:%S')
+        combined_records.append(record_copy)
     
-    return summary
-
-def create_pivot_table(df):
-    """Create pivot table for project breakdown"""
-    if df is None:
-        return None
-    
-    # Create pivot table
-    pivot = df.pivot_table(
-        index='Networking',
-        columns='Source File',
-        values='Units',
-        aggfunc='sum',
-        fill_value=0
-    ).reset_index()
-    
-    # Add total column
-    pivot['Total'] = pivot.sum(axis=1, numeric_only=True)
-    
-    return pivot
-
-def save_data(data, output_file):
-    """Save processed data to JSON file"""
-    output_data = {
-        'summary': data['summary'].to_dict('records'),
-        'files': data['files'],
-        'pivot': data['pivot'].to_dict('records'),
-        'combined': data['combined'].to_dict('records'),
-        'total_items': len(data['summary']),
-        'total_quantity': data['summary']['Units'].sum(),
-        'total_files': len(data['files']),
-        'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    data = {
+        'summary': summary_records,
+        'files': files_records,
+        'pivot': pivot_records,
+        'combined': combined_records,
+        'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'total_items': len(summary_df),
+        'total_quantity': int(summary_df['Units'].sum()),
+        'total_files': len(files_df['File'].unique()) if files_df is not None else 0
     }
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
-    
-    print(f"Data saved to: {output_file}")
+    return data
 
 if __name__ == "__main__":
     script_dir = Path(__file__).parent.resolve()
@@ -517,36 +589,261 @@ if __name__ == "__main__":
     print(f"Using Excel files from repository: {local_data_dir}")
     
     # Process the data directly from repository
-    combined_df, file_info = process_excel_files(local_data_dir)
+    summary_df, files_df, pivot_df, combined_df, error = process_bom_data(str(local_data_dir))
     
-    if combined_df is not None:
-        # Aggregate data
-        summary = aggregate_data(combined_df)
-        pivot = create_pivot_table(combined_df)
+    if error:
+        print(f"❌ Error: {error}")
+    else:
+        # Generate JSON data
+        json_data = generate_json_data(summary_df, files_df, pivot_df, combined_df)
         
-        # Prepare data for JSON export
-        data = {
-            'summary': summary,
-            'files': file_info,
-            'pivot': pivot,
-            'combined': combined_df
-        }
+        # Save JSON data
+        json_file = script_dir / 'data.json'
+        with open(json_file, 'w') as f:
+            json.dump(json_data, f, indent=2)
         
-        # Save to JSON
-        output_file = script_dir / "data.json"
-        save_data(data, output_file)
-        
-        print("=" * 60)
+        print("\n" + "=" * 60)
         print("Data processed successfully!")
         print("=" * 60)
-        print(f"Total items: {len(summary)}")
-        print(f"Total quantity: {summary['Units'].sum():,.0f}")
-        print(f"Total files: {len(file_info)}")
-        print(f"Data saved to: {output_file}")
-        print(f"Generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Total items: {json_data['total_items']}")
+        print(f"Total quantity: {json_data['total_quantity']:,}")
+        print(f"Total files: {json_data['total_files']}")
+        print(f"Data saved to: {json_file}")
+        print(f"Generated at: {json_data['generated_at']}")
         print("=" * 60)
-        print("\nNext steps:")
-        print("1. Open simple_dashboard.html in your browser to view the dashboard")
+```
+
+### Flask Server Script (refresh_server.py)
+
+```python
+#!/usr/bin/env python3
+"""
+Flask server for L11 Networking Dashboard with refresh functionality
+Provides API endpoint for data refresh and serves dashboard files
+"""
+
+from flask import Flask, jsonify, send_from_directory
+from pathlib import Path
+import subprocess
+import json
+from datetime import datetime
+
+app = Flask(__name__)
+BASE_DIR = Path(__file__).parent.resolve()
+
+def process_data():
+    """Run the data processing script"""
+    try:
+        result = subprocess.run(
+            ['python', 'process_data.py'],
+            cwd=BASE_DIR,
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        
+        data_file = BASE_DIR / 'data.json'
+        if data_file.exists():
+            with open(data_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            return {
+                'success': True,
+                'message': 'Data processed successfully',
+                'total_items': data.get('total_items', 0),
+                'total_quantity': data.get('total_quantity', 0),
+                'total_files': data.get('total_files', 0),
+                'generated_at': data.get('generated_at', datetime.now().strftime('%Y-%m-%d %H:%M:%S')),
+                'output': result.stdout
+            }
+        else:
+            return {
+                'success': False,
+                'message': 'Data processing completed but data.json not found',
+                'output': result.stdout,
+                'error': result.stderr
+            }
+    except subprocess.TimeoutExpired:
+        return {
+            'success': False,
+            'message': 'Data processing timed out',
+            'error': 'Processing took longer than 60 seconds'
+        }
+    except Exception as e:
+        return {
+            'success': False,
+            'message': f'Error processing data: {str(e)}',
+            'error': str(e)
+        }
+
+@app.route('/')
+def serve_index():
+    """Serve the main dashboard"""
+    return send_from_directory(BASE_DIR, 'simple_dashboard.html')
+
+@app.route('/simple_dashboard.html')
+def serve_dashboard():
+    """Serve the dashboard"""
+    return send_from_directory(BASE_DIR, 'simple_dashboard.html')
+
+@app.route('/data.json')
+def serve_data():
+    """Serve the data file"""
+    return send_from_directory(BASE_DIR, 'data.json')
+
+@app.route('/api/refresh', methods=['POST'])
+def refresh_data():
+    """API endpoint to refresh data"""
+    result = process_data()
+    return jsonify(result)
+
+@app.route('/api/status')
+def get_status():
+    """Get current data status"""
+    data_file = BASE_DIR / 'data.json'
+    
+    if data_file.exists():
+        with open(data_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        return jsonify({
+            'success': True,
+            'total_items': data.get('total_items', 0),
+            'total_quantity': data.get('total_quantity', 0),
+            'total_files': data.get('total_files', 0),
+            'generated_at': data.get('generated_at', 'Unknown')
+        })
+    else:
+        return jsonify({
+            'success': False,
+            'message': 'Data file not found. Run process_data.py first.'
+        })
+
+if __name__ == '__main__':
+    print("=" * 60)
+    print("L11 Networking Dashboard Server with Refresh API")
+    print("=" * 60)
+    print(f"Server directory: {BASE_DIR}")
+    print(f"Dashboard URL: http://localhost:8000/simple_dashboard.html")
+    print(f"Network URL: http://10.137.51.248:8000/simple_dashboard.html")
+    print(f"Refresh API: http://localhost:8000/api/refresh")
+    print("=" * 60)
+    print("Press Ctrl+C to stop the server")
+    print("=" * 60)
+    
+    app.run(host='0.0.0.0', port=8000, debug=False)
+```
+
+### Network Testing Script (network_test.py)
+
+```python
+#!/usr/bin/env python3
+"""
+Network Connectivity Test Script for L11 Networking Dashboard
+Tests network connectivity and server accessibility
+"""
+
+import socket
+import subprocess
+import sys
+from pathlib import Path
+import requests
+import json
+
+def test_local_server():
+    """Test if local server is running"""
+    print("=" * 60)
+    print("Testing Local Server")
+    print("=" * 60)
+    
+    try:
+        response = requests.get('http://localhost:8000/simple_dashboard.html', timeout=10)
+        if response.status_code == 200:
+            print("[PASS] Local server is running and accessible")
+            print(f"   Status: {response.status_code}")
+            print(f"   URL: http://localhost:8000/simple_dashboard.html")
+            return True
+        else:
+            print(f"[FAIL] Local server returned status: {response.status_code}")
+            return False
+    except requests.exceptions.Timeout:
+        print("[WARN] Local server timeout - server may be slow but running")
+        print("   Server is likely running but responding slowly")
+        return True
+    except requests.exceptions.ConnectionError:
+        print("[FAIL] Local server is not running")
+        print("   Start the server with: python refresh_server.py")
+        return False
+    except Exception as e:
+        print(f"[FAIL] Error testing local server: {e}")
+        return False
+
+def test_network_ip():
+    """Test network IP accessibility"""
+    print("\n" + "=" * 60)
+    print("Testing Network IP (10.137.51.248)")
+    print("=" * 60)
+    
+    ip = "10.137.51.248"
+    port = 8000
+    
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(5)
+        result = sock.connect_ex((ip, port))
+        
+        if result == 0:
+            print("[PASS] Network IP is accessible")
+            print(f"   IP: {ip}")
+            print(f"   Port: {port}")
+            print(f"   URL: http://{ip}:{port}/simple_dashboard.html")
+            sock.close()
+            return True
+        else:
+            print(f"[FAIL] Cannot connect to {ip}:{port}")
+            print("   Possible causes:")
+            print("   - Server not running")
+            print("   - Network firewall blocking connection")
+            print("   - Incorrect IP address")
+            sock.close()
+            return False
+    except socket.gaierror:
+        print(f"[FAIL] Cannot resolve hostname: {ip}")
+        return False
+    except Exception as e:
+        print(f"[FAIL] Error testing network IP: {e}")
+        return False
+
+if __name__ == "__main__":
+    print("L11 Networking Dashboard - Network Connectivity Test")
+    print("=" * 60)
+    
+    results = {
+        'local_server': test_local_server(),
+        'network_ip': test_network_ip()
+    }
+    
+    print("\n" + "=" * 60)
+    print("TEST SUMMARY")
+    print("=" * 60)
+    
+    for test_name, result in results.items():
+        status = "[PASS]" if result else "[FAIL]"
+        print(f"{status}: {test_name.replace('_', ' ').title()}")
+    
+    print("=" * 60)
+```
+
+### Key Scripts in Repository
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| **process_data.py** | Main data processing script | `python process_data.py` |
+| **refresh_server.py** | Flask server with refresh API (port 8000) | `python refresh_server.py` |
+| **refresh_server_8080.py** | Alternative server on port 8080 | `python refresh_server_8080.py` |
+| **refresh_server_80.py** | Alternative server on port 80 | `python refresh_server_80.py` |
+| **start_server.py** | Simple HTTP server (no refresh) | `python start_server.py` |
+| **network_test.py** | Network connectivity testing | `python network_test.py` |
         print("2. Or share the repository with your team")
         print("3. For updates: add new Excel files to data/ and re-run this script")
     else:
