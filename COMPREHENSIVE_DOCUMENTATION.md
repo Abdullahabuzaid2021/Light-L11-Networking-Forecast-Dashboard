@@ -1205,7 +1205,7 @@ Modify `simple_dashboard.html` to:
 
 ### Primary Access Method: GitHub Pages (RECOMMENDED)
 
-**Dashboard URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
 #### Advantages
 - ✅ **No admin rights required**

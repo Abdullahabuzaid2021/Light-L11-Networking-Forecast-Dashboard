@@ -5,7 +5,7 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 ## 🚀 Quick Access
 
 **GitHub Pages URL (RECOMMENDED - No Admin Rights Required)**: 
-https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
 **Local Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running Flask server)
 
@@ -13,7 +13,7 @@ https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM
 - **Network URL**: http://10.137.51.248:8000/simple_dashboard.html (within Dell network) - Requires firewall configuration
 - **Alternative Port**: http://10.137.51.248:8080/simple_dashboard.html (if port 8000 blocked) - Requires firewall configuration
 
-**GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
+**GitHub Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
 
 **SharePoint Data Source**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
 
@@ -313,7 +313,7 @@ For issues or questions, contact the development team.
 - **External URL**: http://143.166.192.16:8000/simple_dashboard.html (if accessible)
 
 ### Repository & Resources
-- **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
+- **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
 - **SharePoint Data**: [Hackathon - L11 forecasting](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting?d=wb9ae5c4571d84bec94d375ef7ea58856&csf=1&web=1&e=rBs2jB)
 - **Comprehensive Documentation**: [COMPREHENSIVE_DOCUMENTATION.md](COMPREHENSIVE_DOCUMENTATION.md)
 - **Dell Team Access Guide**: [DELL_TEAM_ACCESS_GUIDE.md](DELL_TEAM_ACCESS_GUIDE.md)
@@ -321,8 +321,8 @@ For issues or questions, contact the development team.
 ### Quick Start Commands
 ```bash
 # Clone the repository
-git clone https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files.git
-cd Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files
+git clone https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard.git
+cd Light-L11-Networking-Forecast-Dashboard
 
 # Install dependencies
 pip install -r requirements.txt

@@ -5,7 +5,7 @@ This guide provides Dell team members with the requirements and steps to access 
 
 ## 🌐 Primary Access Method: GitHub Pages (RECOMMENDED)
 
-**Dashboard URL**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
 ### **Advantages of GitHub Pages:**
 - ✅ **No admin rights required**
@@ -17,7 +17,7 @@ This guide provides Dell team members with the requirements and steps to access 
 
 ### **How to Access:**
 1. **Open web browser** (Chrome, Firefox, Edge, Safari)
-2. **Navigate to**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/simple_dashboard.html
+2. **Navigate to**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 3. **Dashboard loads** automatically with embedded data
 4. **Use all features** immediately
 
