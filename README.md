@@ -13,14 +13,13 @@ Light-L11-Networking-Forecast-Dashboard/
 │   ├── demo_materials/             # Screenshots, videos, and presentations
 │   ├── code_scripts/               # Automation scripts and code
 │   └── usage_instructions/         # Step-by-step usage guide
+├── dashboard/                      # Dashboard files
+│   ├── simple_dashboard.html       # Main dashboard (with embedded data)
+│   └── index.html                  # Alternative dashboard
 ├── data/                           # Excel files directory
-├── simple_dashboard.html           # Main dashboard (with embedded data)
-├── index.html                      # Alternative dashboard
 ├── data.json                       # Generated data file
-├── requirements.txt                # Python dependencies
-├── COMPREHENSIVE_DOCUMENTATION.md   # Complete documentation
-├── DELL_TEAM_ACCESS_GUIDE.md       # Team member access guide
-└── .nojekyll                       # Disables Jekyll for GitHub Pages
+├── .nojekyll                       # Disables Jekyll for GitHub Pages
+└── README.md                       # Main project README
 ```
 
 ## 🚀 Quick Start
@@ -38,8 +37,8 @@ python refresh_server.py
 ```
 
 ### 3. Access Dashboard
-- **Local**: http://localhost:8000/simple_dashboard.html
-- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
+- **Local**: http://localhost:8000/dashboard/simple_dashboard.html
+- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/dashboard/simple_dashboard.html
 
 ## 📚 Documentation
 
@@ -72,7 +71,7 @@ This solution significantly speeds up BOM aggregation (99.9% time reduction) whi
 
 ## 📱 Dashboard Links
 
-- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
+- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/dashboard/simple_dashboard.html
 - **Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
 
 ## 🤝 Support

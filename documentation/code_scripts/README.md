@@ -49,6 +49,12 @@ cd documentation/code_scripts
 python network_test.py
 ```
 
+## Dashboard Location
+
+The dashboard files are located in the `dashboard/` folder:
+- **Main Dashboard**: `dashboard/simple_dashboard.html`
+- **Alternative Dashboard**: `dashboard/index.html`
+
 ## Related Documentation
 
 - **[README](../readme/)** - Project overview

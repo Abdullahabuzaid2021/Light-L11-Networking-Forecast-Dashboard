@@ -136,7 +136,7 @@ def process_bom_data(directory):
 
 def embed_data_in_html(json_data, script_dir):
     """Embed JSON data directly into HTML file for GitHub Pages reliability"""
-    html_file = script_dir / 'simple_dashboard.html'
+    html_file = script_dir / 'dashboard' / 'simple_dashboard.html'
     
     try:
         with open(html_file, 'r', encoding='utf-8') as f:
@@ -157,7 +157,7 @@ def embed_data_in_html(json_data, script_dir):
             with open(html_file, 'w', encoding='utf-8') as f:
                 f.write(html_content)
             
-            print("Data embedded into simple_dashboard.html for GitHub Pages")
+            print("Data embedded into dashboard/simple_dashboard.html for GitHub Pages")
         else:
             print("Warning: Could not find dashboardData pattern in HTML")
             

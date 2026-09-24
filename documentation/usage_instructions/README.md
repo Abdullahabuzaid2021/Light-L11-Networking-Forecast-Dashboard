@@ -15,6 +15,19 @@ This section contains step-by-step instructions on how to use and adapt the L11 
   - Best practices
   - Quick reference
 
+- **[COMPREHENSIVE_DOCUMENTATION.md](COMPREHENSIVE_DOCUMENTATION.md)** - Complete documentation including:
+  - Repository structure
+  - Detailed feature descriptions
+  - Dell team access information
+  - Network testing procedures
+  - GitHub Pages troubleshooting
+
+- **[DELL_TEAM_ACCESS_GUIDE.md](DELL_TEAM_ACCESS_GUIDE.md)** - Team member access guide including:
+  - Prerequisites for Dell team members
+  - Network requirements
+  - Access methods
+  - Troubleshooting common issues
+
 ## Quick Reference
 
 For complete usage instructions, see [USAGE_INSTRUCTIONS.md](USAGE_INSTRUCTIONS.md).
