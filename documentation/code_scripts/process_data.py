@@ -193,7 +193,7 @@ def generate_json_data(summary_df, files_df, pivot_df, combined_df):
     return data
 
 if __name__ == "__main__":
-    script_dir = Path(__file__).parent.resolve()
+    script_dir = Path(__file__).parent.parent.resolve()
     local_data_dir = script_dir / "data"
     
     print("=" * 60)
