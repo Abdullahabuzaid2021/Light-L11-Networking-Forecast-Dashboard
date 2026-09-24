@@ -38,7 +38,8 @@ python refresh_server.py
 
 ### 3. Access Dashboard
 - **Local**: http://localhost:8000/dashboard/simple_dashboard.html
-- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
+- **Dell Network**: http://10.137.51.248:8000/dashboard/simple_dashboard.html (requires firewall configuration)
+- **Alternative Port**: http://10.137.51.248:8080/dashboard/simple_dashboard.html
 
 ## 📚 Documentation
 
@@ -54,8 +55,8 @@ python refresh_server.py
 - **Automated Data Processing**: Processes Excel files with PnL SN6600 tabs
 - **Interactive Dashboard**: Web-based visualization with charts and tables
 - **One-Click Refresh**: Update data without server restart
-- **Team Sharing**: GitHub Pages for global access
-- **No Admin Rights Required**: Works without firewall configuration
+- **Dell Network Sharing**: Internal network access for team members
+- **Multiple Server Options**: Port 8000, 8080, and 80 available
 
 ## 📊 Data Files
 
@@ -71,8 +72,9 @@ This solution significantly speeds up BOM aggregation (99.9% time reduction) whi
 
 ## 📱 Dashboard Links
 
-- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
-- **Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
+- **Dell GitLab Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
+- **Local Access**: http://localhost:8000/dashboard/simple_dashboard.html
+- **Dell Network Access**: http://10.137.51.248:8000/dashboard/simple_dashboard.html (requires firewall configuration)
 
 ## 🤝 Support
 
