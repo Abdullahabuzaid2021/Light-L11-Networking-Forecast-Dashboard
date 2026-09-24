@@ -3,15 +3,15 @@
 ## 🎯 Overview
 This guide provides Dell team members with the requirements and steps to access the L11 Networking Forecast Dashboard.
 
-## 🌐 Primary Access Method: GitLab Pages (RECOMMENDED)
+## 🌐 Primary Access Method: GitHub Pages (RECOMMENDED)
 
 **Dashboard URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
-### **Advantages of GitLab Pages:**
+### **Advantages of GitHub Pages:**
 - ✅ **No admin rights required**
 - ✅ **No network restrictions** - works from anywhere
 - ✅ **No software installation needed**
-- ✅ **Automatic updates** when code is pushed to GitLab
+- ✅ **Automatic updates** when code is pushed to GitHub
 - ✅ **Permanent URL** - always available
 - ✅ **Global access** - no Dell network needed
 
@@ -49,23 +49,23 @@ This guide provides Dell team members with the requirements and steps to access 
 - **No special software installation needed**
 
 ### **Important Note:**
-Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, the dashboard owner may need admin rights to configure Windows Firewall. Use GitLab Pages as the primary method to avoid firewall issues.
+Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, the dashboard owner may need admin rights to configure Windows Firewall. Use GitHub Pages as the primary method to avoid firewall issues.
 
 ---
 
 ## 🔧 Troubleshooting Access Issues
 
-### GitLab Pages Access Issues
+### GitHub Pages Access Issues
 
 #### Issue 1: "404 Not Found" Error
 **Possible Causes:**
-- GitLab Pages deployment not completed
+- GitHub Pages deployment not completed
 - Incorrect URL
 - Repository not public
 
 **Solutions:**
 1. **Wait 2-3 minutes** after git push for deployment
-2. **Verify URL**: Ensure using the correct GitLab Pages URL
+2. **Verify URL**: Ensure using the correct GitHub Pages URL
 3. **Check repository**: Ensure repository is public
 4. **Check Actions tab**: Verify deployment workflow completed successfully
 
@@ -106,7 +106,7 @@ Dell network access requires **firewall configuration** on the server machine. I
 2. **Check IP address**: Ensure using correct IP: http://10.137.51.248:8000/simple_dashboard.html
 3. **Network connectivity**: Test with `ping 10.137.51.248` in command prompt
 4. **VPN connection**: If remote, ensure VPN is connected to Dell network
-5. **Use GitLab Pages**: Recommended alternative that doesn't require network access
+5. **Use GitHub Pages**: Recommended alternative that doesn't require network access
 
 ---
 
@@ -236,16 +236,16 @@ If server-side issues are suspected:
 - **Email**: [Your Dell email]
 - **Teams**: [Your Teams contact]
 
-### GitLab Support
-- **GitLab Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
-- **GitLab Documentation**: https://docs.gitlab.com/
+### GitHub Support
+- **GitHub Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
+- **GitHub Documentation**: https://docs.gitlab.com/
 
 ### Secondary Support
 - **Dell IT Help Desk**: For network/VPN issues
 - **Networking L11 Team**: For data-related questions
 
 ### Emergency Contacts
-- **GitLab Pages down**: Check GitLab Status page
+- **GitHub Pages down**: Check GitHub Status page
 - **Data access issues**: Contact Networking L11 team
 - **Network problems**: Contact Dell IT Help Desk
 
@@ -253,7 +253,7 @@ If server-side issues are suspected:
 
 ## 🔄 Alternative Access Methods
 
-### GitLab Pages Access
+### GitHub Pages Access
 If internal network access fails:
 1. **Go to**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
 2. **Access dashboard**: No network restrictions
@@ -335,8 +335,8 @@ For offline access:
 
 ### User Feedback
 - **Satisfaction survey**: Quarterly user feedback
-- **Feature requests**: GitLab issues for new features
-- **Bug reports**: GitLab issues for problems
+- **Feature requests**: GitHub issues for new features
+- **Bug reports**: GitHub issues for problems
 - **Usage patterns**: Analytics for improvement
 
 ### Continuous Improvement
@@ -417,7 +417,7 @@ For offline access:
 ### Documentation
 - [Comprehensive Documentation](COMPREHENSIVE_DOCUMENTATION.md)
 - [Project README](README.md)
-- [GitLab Repository](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard)
+- [GitHub Repository](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard)
 
 ### Training Materials
 - [Dashboard Tutorial](#dashboard-navigation)
@@ -427,7 +427,7 @@ For offline access:
 ### Support Resources
 - [Dell IT Help Desk](https://dell.com/support)
 - [Networking L11 Team](SharePoint link)
-- [GitLab Issues](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/-/issues)
+- [GitHub Issues](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/-/issues)
 
 ---
 
@@ -453,7 +453,7 @@ For offline access:
 - **Dashboard Access Issues**: Contact Abdullah Abuzaid
 - **Network/VPN Problems**: Dell IT Help Desk
 - **Data Questions**: Networking L11 Team
-- **Technical Issues**: GitLab Issues
+- **Technical Issues**: GitHub Issues
 
 **Dashboard URL:** http://10.137.51.248:8000/simple_dashboard.html
 

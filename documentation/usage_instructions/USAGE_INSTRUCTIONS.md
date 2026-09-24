@@ -9,7 +9,7 @@ This document provides step-by-step instructions on how to use and adapt the L11
 - **Operating System**: Windows, macOS, or Linux
 - **Python**: Version 3.8 or higher
 - **Web Browser**: Chrome, Firefox, Edge, or Safari (latest version)
-- **Internet Connection**: Required for GitLab Pages and CDN access
+- **Internet Connection**: Required for GitHub Pages and CDN access
 
 ### Software Requirements
 - **Python Libraries**: pandas, openpyxl, flask, requests
@@ -41,7 +41,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 - **Data Cleaning**: Automated filtering of invalid entries and duplicates
 - **Data Transformation**: Automated conversion to JSON format for web display
 - **Visualization**: Automated generation of charts and tables
-- **Deployment**: Automated GitLab Pages deployment on code changes
+- **Deployment**: Automated GitHub Pages deployment on code changes
 
 ### Automation Metrics
 
@@ -69,7 +69,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 2. **Accuracy**: Eliminates manual calculation errors
 3. **Consistency**: Standardized processing every time
 4. **Scalability**: Handles growing datasets without additional effort
-5. **Availability**: 24/7 access via GitLab Pages
+5. **Availability**: 24/7 access via GitHub Pages
 
 ## Installation Guide
 
@@ -308,9 +308,9 @@ type: 'bar',
 type: 'line',
 ```
 
-### GitLab Pages Deployment
+### GitHub Pages Deployment
 
-#### Step 1: Configure GitLab Pages
+#### Step 1: Configure GitHub Pages
 1. Go to repository: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/settings/pages
 2. Set **Source** to **GitHub Actions**
 3. Click **Save**
@@ -328,20 +328,20 @@ git push origin main
 
 #### Step 3: Monitor Deployment
 1. Go to **Actions** tab in repository
-2. Wait for "Deploy to GitLab Pages" workflow
+2. Wait for "Deploy to GitHub Pages" workflow
 3. Check deployment status (should take 1-2 minutes)
-4. Access dashboard at GitLab Pages URL
+4. Access dashboard at GitHub Pages URL
 
 #### Step 4: Share URL
 ```
-GitLab Pages URL:
-https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/simple_dashboard.html
+GitHub Pages URL:
+https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 ```
 
 ### Team Sharing
 
 #### For Dell Team Members
-1. **Share GitLab Pages URL** (recommended)
+1. **Share GitHub Pages URL** (recommended)
 2. **No installation required** - just browser access
 3. **Works from anywhere** - no Dell network needed
 4. **Automatic updates** - when you push changes
@@ -405,9 +405,9 @@ https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/simpl
 - Test local access first
 - Run `python network_test.py`
 - Check firewall settings
-- Use GitLab Pages as alternative
+- Use GitHub Pages as alternative
 
-#### Problem: GitLab Pages not loading
+#### Problem: GitHub Pages not loading
 **Solution**:
 - Check Actions tab for deployment status
 - Verify .nojekyll file exists
@@ -531,7 +531,7 @@ df = pd.DataFrame(data)
 - **Pandas Documentation**: https://pandas.pydata.org/docs/
 - **Flask Documentation**: https://flask.palletsprojects.com/
 - **Chart.js Documentation**: https://www.chartjs.org/docs/
-- **GitLab Pages Documentation**: https://docs.github.com/en/pages
+- **GitHub Pages Documentation**: https://docs.github.com/en/pages
 
 ## Quick Reference
 
@@ -555,7 +555,7 @@ git push origin main
 ### Key URLs
 - **Local Dashboard**: http://localhost:8000/simple_dashboard.html
 - **Network Dashboard**: http://10.137.51.248:8000/simple_dashboard.html
-- **GitLab Pages**: https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/simple_dashboard.html
+- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 - **Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 
 ### File Locations

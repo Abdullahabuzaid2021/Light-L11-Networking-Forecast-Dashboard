@@ -4,8 +4,8 @@ A lightweight web application for L11 networking BOM aggregation and analysis. T
 
 ## 🚀 Quick Access
 
-**GitLab Pages URL (RECOMMENDED - No Admin Rights Required)**: 
-https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/simple_dashboard.html
+**GitHub Pages URL (RECOMMENDED - No Admin Rights Required)**: 
+https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
 **Local Dashboard URL**: http://localhost:8000/simple_dashboard.html (when running Flask server)
 
@@ -50,7 +50,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 - **Data Cleaning**: Automated filtering of invalid entries and duplicates
 - **Data Transformation**: Automated conversion to JSON format for web display
 - **Visualization**: Automated generation of charts and tables
-- **Deployment**: Automated GitLab Pages deployment on code changes
+- **Deployment**: Automated GitHub Pages deployment on code changes
 
 ### **Specific Collaboration Examples**
 
@@ -67,7 +67,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 - Creates pivot tables
 - Generates JSON output
 - Embeds data in HTML
-- Deploys to GitLab Pages
+- Deploys to GitHub Pages
 
 **Time Savings**: Manual process: 2-3 hours → Automated: 30 seconds
 
@@ -89,13 +89,13 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 
 #### **Example 3: Team Sharing**
 **Human Action**:
-- Configures GitLab Pages
+- Configures GitHub Pages
 - Shares URL with team
 - Explains dashboard usage
 - Answers team questions
 
 **AI/System Action**:
-- Automatically deploys to GitLab Pages
+- Automatically deploys to GitHub Pages
 - Serves dashboard globally
 - Handles multiple concurrent users
 - Provides consistent data view
@@ -128,7 +128,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 2. **Accuracy**: Eliminates manual calculation errors
 3. **Consistency**: Standardized processing every time
 4. **Scalability**: Handles growing datasets without additional effort
-5. **Availability**: 24/7 access via GitLab Pages
+5. **Availability**: 24/7 access via GitHub Pages
 
 ### **Collaboration Workflow**
 
@@ -155,7 +155,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
     ↓
 [Human] Make Strategic Decisions
     ↓
-[Human] Share with Team via GitLab Pages
+[Human] Share with Team via GitHub Pages
     ↓
 [AI/System] Deploy and Serve Dashboard
     ↓
@@ -237,7 +237,7 @@ To address these challenges, we developed an automated solution with the followi
 - **Internal Sharing**: Configured for Dell internal network access via local server
 - **Source Control**: Managed code through GitHub for collaboration
 - **Documentation**: Created comprehensive setup and usage documentation
-- **Scalability**: Designed for easy deployment on web servers or GitLab Pages
+- **Scalability**: Designed for easy deployment on web servers or GitHub Pages
 
 ## Conclusion of Outcome
 
@@ -324,7 +324,7 @@ L11_Networking_Web_App/
 ├── process_data.py                    # Python data processing script
 ├── network_test.py                    # Network connectivity testing
 ├── requirements.txt                   # Python dependencies
-├── .nojekyll                         # Disables Jekyll for GitLab Pages
+├── .nojekyll                         # Disables Jekyll for GitHub Pages
 ├── README.md                          # Project documentation
 ├── COMPREHENSIVE_DOCUMENTATION.md     # Complete documentation
 ├── DELL_TEAM_ACCESS_GUIDE.md         # Dell team member guide
@@ -361,7 +361,7 @@ The dashboard can be deployed for team access through:
 - Upload files and share the URL
 - No special server configuration needed
 
-**GitLab Pages**:
+**GitHub Pages**:
 - Deploy via GitHub repository
 - Get a permanent URL like `https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/`
 - Easy sharing with team members
@@ -440,7 +440,7 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 
 ## Deployment Options for Team Sharing
 
-### Option 1: GitLab Pages (RECOMMENDED - No Admin Rights Required)
+### Option 1: GitHub Pages (RECOMMENDED - No Admin Rights Required)
 1. **Already configured** with `.nojekyll` file for static HTML serving
 2. **Automatic deployment** on git push
 3. **No server setup** required
@@ -460,7 +460,7 @@ The dashboard is designed to work with locally synced SharePoint folders. To use
 1. Run: `python refresh_server_8080.py`
 2. Share: http://10.137.51.248:8080/simple_dashboard.html
 3. **May still require firewall configuration**
-4. **Less reliable** than GitLab Pages
+4. **Less reliable** than GitHub Pages
 
 ### Option 4: Dell Internal Web Server (Contact IT)
 1. Contact Dell IT Help Desk

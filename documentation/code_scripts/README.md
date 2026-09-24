@@ -10,7 +10,7 @@ This section contains the automation scripts and code that power the L11 Network
   - Aggregates BOM data by Model/PN
   - Creates pivot tables for project breakdown
   - Generates JSON output for dashboard
-  - Embeds data in HTML for GitLab Pages
+  - Embeds data in HTML for GitHub Pages
 
 - **[refresh_server.py](refresh_server.py)** - Flask server with refresh API that:
   - Serves dashboard files

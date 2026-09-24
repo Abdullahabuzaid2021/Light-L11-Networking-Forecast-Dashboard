@@ -26,7 +26,7 @@ Next steps:
 1. Open simple_dashboard.html in your browser to view the dashboard
 2. Or share the repository with your team
 3. For updates: add new Excel files to data/ and re-run this script
-Data embedded into simple_dashboard.html for GitLab Pages
+Data embedded into simple_dashboard.html for GitHub Pages
 ```
 
 ### Generated data.json Structure
@@ -216,15 +216,15 @@ Press CTRL+C to quit
 - **Interactivity**: Hover tooltips showing exact values
 - **Colors**: Professional color scheme with clear contrast
 
-## GitLab Pages Deployment Output
+## GitHub Pages Deployment Output
 
 ### GitHub Actions Workflow Output
 ```
-Run Deploy to GitLab Pages
+Run Deploy to GitHub Pages
   Checkout
   Setup Pages
   Upload artifact
-  Deploy to GitLab Pages
+  Deploy to GitHub Pages
   Deployment successful
   Page URL: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/
 ```
@@ -269,7 +269,7 @@ Solution: Check Excel file sizes and reduce complexity if needed
 ### Dashboard Load Time
 - **Local server**: <1 second
 - **Network access**: 1-2 seconds
-- **GitLab Pages**: 2-3 seconds (initial load)
+- **GitHub Pages**: 2-3 seconds (initial load)
 
 ### Data Size
 - **JSON file size**: ~32 KB

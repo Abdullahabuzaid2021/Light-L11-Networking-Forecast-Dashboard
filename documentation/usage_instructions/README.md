@@ -8,7 +8,7 @@ This section contains step-by-step instructions on how to use and adapt the L11 
   - Installation guide
   - Basic usage instructions
   - Advanced customization guide
-  - GitLab Pages deployment guide
+  - GitHub Pages deployment guide
   - Team sharing instructions
   - Troubleshooting guide
   - Adaptation guide for different use cases
@@ -20,7 +20,7 @@ This section contains step-by-step instructions on how to use and adapt the L11 
   - Detailed feature descriptions
   - Dell team access information
   - Network testing procedures
-  - GitLab Pages troubleshooting
+  - GitHub Pages troubleshooting
 
 - **[DELL_TEAM_ACCESS_GUIDE.md](DELL_TEAM_ACCESS_GUIDE.md)** - Team member access guide including:
   - Prerequisites for Dell team members

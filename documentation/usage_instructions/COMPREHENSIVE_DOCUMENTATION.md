@@ -49,7 +49,7 @@ L11_Networking_Web_App/
 ├── process_data.py                # Python data processing script
 ├── network_test.py                # Network connectivity testing
 ├── requirements.txt               # Python dependencies
-├── .nojekyll                     # Disables Jekyll for GitLab Pages
+├── .nojekyll                     # Disables Jekyll for GitHub Pages
 ├── README.md                      # Project documentation
 ├── COMPREHENSIVE_DOCUMENTATION.md # Complete documentation
 ├── DELL_TEAM_ACCESS_GUIDE.md     # Dell team member guide
@@ -123,7 +123,7 @@ python start_server.py
 
 ### GitLab Repository
 - **Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
-- **GitLab Pages**: https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/
+- **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/
 
 ---
 
@@ -1073,10 +1073,10 @@ Press Ctrl+C to stop the server
 2. Ensure firewall rules allow external access
 3. Team members can access from outside Dell network
 
-#### GitLab Pages Sharing
+#### GitHub Pages Sharing
 1. Push code to GitHub repository
-2. Enable GitLab Pages in repository settings
-3. Share GitLab Pages URL with team
+2. Enable GitHub Pages in repository settings
+3. Share GitHub Pages URL with team
 4. Automatic deployment on code updates
 
 ### Troubleshooting
@@ -1203,9 +1203,9 @@ Modify `simple_dashboard.html` to:
 
 ## Dell Team Access
 
-### Primary Access Method: GitLab Pages (RECOMMENDED)
+### Primary Access Method: GitHub Pages (RECOMMENDED)
 
-**Dashboard URL**: https://abdullah-abuzaid.gitlab.io/light-l11-networking-forecast-dashboard/simple_dashboard.html
+**Dashboard URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
 #### Advantages
 - ✅ **No admin rights required**
@@ -1223,7 +1223,7 @@ Modify `simple_dashboard.html` to:
 
 #### How to Access
 1. **Open web browser**
-2. **Navigate to**: GitLab Pages URL above
+2. **Navigate to**: GitHub Pages URL above
 3. **Dashboard loads** automatically
 4. **Use all features** immediately
 
@@ -1240,9 +1240,9 @@ Modify `simple_dashboard.html` to:
 - **Admin rights** may be required to configure Windows Firewall
 
 #### Important Note
-Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, use GitLab Pages as the primary method to avoid firewall issues.
+Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, use GitHub Pages as the primary method to avoid firewall issues.
 
-### Troubleshooting GitLab Pages Access
+### Troubleshooting GitHub Pages Access
 
 #### Common Issues
 1. **"404 Not Found"**: Wait 2-3 minutes for deployment, verify URL
@@ -1346,7 +1346,7 @@ This comprehensive documentation provides all necessary information for setting 
 
 ### Team Sharing
 - **Dell Internal Network**: http://10.137.51.248:8000/simple_dashboard.html
-- **GitLab Pages**: Available for external access
+- **GitHub Pages**: Available for external access
 - **Complete Documentation**: Guides for team members and administrators
 
 For questions or issues, please refer to the troubleshooting section, Dell Team Access Guide, or contact the development team.
