@@ -2,6 +2,19 @@
 
 A lightweight web application for L11 networking BOM aggregation and analysis.
 
+## 🌐 Dashboard Access (RECOMMENDED - No Admin Rights Required)
+
+**GitHub Pages URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
+
+**Benefits:**
+- ✅ No admin rights required
+- ✅ Works globally without Dell network
+- ✅ No firewall configuration needed
+- ✅ Permanent URL always available
+- ✅ Best for team sharing
+
+---
+
 ## 📁 Repository Structure
 
 ```
@@ -37,6 +50,7 @@ python refresh_server.py
 ```
 
 ### 3. Access Dashboard
+- **GitHub Pages (RECOMMENDED)**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 - **Local**: http://localhost:8000/dashboard/simple_dashboard.html
 - **Dell Network**: http://10.137.51.248:8000/dashboard/simple_dashboard.html (requires firewall configuration)
 - **Alternative Port**: http://10.137.51.248:8080/dashboard/simple_dashboard.html
@@ -72,6 +86,8 @@ This solution significantly speeds up BOM aggregation (99.9% time reduction) whi
 
 ## 📱 Dashboard Links
 
+- **GitHub Pages (RECOMMENDED)**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
+- **GitHub Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
 - **Dell GitLab Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 - **Local Access**: http://localhost:8000/dashboard/simple_dashboard.html
 - **Dell Network Access**: http://10.137.51.248:8000/dashboard/simple_dashboard.html (requires firewall configuration)
