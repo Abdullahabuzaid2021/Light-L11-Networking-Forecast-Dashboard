@@ -65,7 +65,7 @@ L11_Networking_Web_App/
 #### Setup Instructions
 1. Clone the repository:
 ```bash
-git clone https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard.git
+git clone https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard.git
 cd Light-L11-Networking-Forecast-Dashboard
 ```
 
@@ -122,7 +122,7 @@ python start_server.py
 - **External URL**: http://143.166.192.16:8000/simple_dashboard.html
 
 ### GitHub Repository
-- **Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
+- **Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 - **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/
 
 ---
@@ -1185,7 +1185,7 @@ Modify `simple_dashboard.html` to:
 
 ### Documentation
 - [Project README](README.md)
-- [GitHub Repository](https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard)
+- [GitHub Repository](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard)
 - [SharePoint Documentation](https://dell.sharepoint.com/:f:/r/sites/NetworkingL11RackPlanning/Shared%20Documents/General/Hackathon%20-%20L11%20forecasting)
 
 ### Support

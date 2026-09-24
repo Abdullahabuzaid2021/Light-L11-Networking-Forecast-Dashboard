@@ -76,7 +76,7 @@ This solution is **Accelerated** - it significantly speeds up the BOM aggregatio
 ### Step 1: Clone the Repository
 ```bash
 # Clone the repository
-git clone https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard.git
+git clone https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard.git
 cd Light-L11-Networking-Forecast-Dashboard
 ```
 
@@ -311,7 +311,7 @@ type: 'line',
 ### GitHub Pages Deployment
 
 #### Step 1: Configure GitHub Pages
-1. Go to repository: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard/settings/pages
+1. Go to repository: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/settings/pages
 2. Set **Source** to **GitHub Actions**
 3. Click **Save**
 
@@ -517,7 +517,7 @@ df = pd.DataFrame(data)
 - **USAGE_INSTRUCTIONS.md**: This file
 
 ### Code Repository
-- **GitHub**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
+- **GitHub**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 - **Issues**: Report bugs and feature requests
 - **Wiki**: Additional documentation and tips
 
@@ -556,7 +556,7 @@ git push origin main
 - **Local Dashboard**: http://localhost:8000/simple_dashboard.html
 - **Network Dashboard**: http://10.137.51.248:8000/simple_dashboard.html
 - **GitHub Pages**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
-- **Repository**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
+- **Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 
 ### File Locations
 - **Excel Files**: data/ directory

@@ -13,14 +13,14 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Get the directory where this script is located
-BASE_DIR = Path(__file__).parent.resolve()
+BASE_DIR = Path(__file__).parent.parent.resolve()
 
 def process_data():
     """Run the data processing script"""
     try:
         result = subprocess.run(
             ['python', 'process_data.py'],
-            cwd=BASE_DIR,
+            cwd=BASE_DIR / 'documentation' / 'code_scripts',
             capture_output=True,
             text=True,
             timeout=60
@@ -64,12 +64,12 @@ def process_data():
 @app.route('/')
 def serve_index():
     """Serve the main dashboard"""
-    return send_from_directory(BASE_DIR, 'simple_dashboard.html')
+    return send_from_directory(BASE_DIR / 'dashboard', 'simple_dashboard.html')
 
 @app.route('/simple_dashboard.html')
 def serve_dashboard():
     """Serve the dashboard"""
-    return send_from_directory(BASE_DIR, 'simple_dashboard.html')
+    return send_from_directory(BASE_DIR / 'dashboard', 'simple_dashboard.html')
 
 @app.route('/data.json')
 def serve_data():
@@ -109,8 +109,8 @@ if __name__ == '__main__':
     print("L11 Networking Dashboard Server with Refresh API")
     print("=" * 60)
     print(f"Server directory: {BASE_DIR}")
-    print(f"Dashboard URL: http://localhost:8000/simple_dashboard.html")
-    print(f"Network URL: http://10.137.51.248:8000/simple_dashboard.html")
+    print(f"Dashboard URL: http://localhost:8000/dashboard/simple_dashboard.html")
+    print(f"Network URL: http://10.137.51.248:8000/dashboard/simple_dashboard.html")
     print(f"Refresh API: http://localhost:8000/api/refresh")
     print("=" * 60)
     print("Press Ctrl+C to stop the server")

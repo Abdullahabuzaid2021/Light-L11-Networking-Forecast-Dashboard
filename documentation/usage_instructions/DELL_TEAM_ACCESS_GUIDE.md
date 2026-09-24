@@ -236,9 +236,9 @@ If server-side issues are suspected:
 - **Email**: [Your Dell email]
 - **Teams**: [Your Teams contact]
 
-### GitHub Pages Support
-- **GitHub Issues**: https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/issues
-- **GitHub Documentation**: https://docs.github.com/en/pages
+### GitLab Support
+- **GitLab Repository**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
+- **GitLab Documentation**: https://docs.gitlab.com/
 
 ### Secondary Support
 - **Dell IT Help Desk**: For network/VPN issues
@@ -417,7 +417,7 @@ For offline access:
 ### Documentation
 - [Comprehensive Documentation](COMPREHENSIVE_DOCUMENTATION.md)
 - [Project README](README.md)
-- [GitHub Repository](https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files)
+- [GitLab Repository](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard)
 
 ### Training Materials
 - [Dashboard Tutorial](#dashboard-navigation)
@@ -427,7 +427,7 @@ For offline access:
 ### Support Resources
 - [Dell IT Help Desk](https://dell.com/support)
 - [Networking L11 Team](SharePoint link)
-- [GitHub Issues](https://github.com/Abdullahabuzaid2021/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/issues)
+- [GitLab Issues](https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/-/issues)
 
 ---
 

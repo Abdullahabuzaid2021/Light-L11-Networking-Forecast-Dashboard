@@ -458,7 +458,7 @@ for L11 networking planning."
 ### Quick Setup
 ```bash
 # Clone repository
-git clone https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard.git
+git clone https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard.git
 cd Light-L11-Networking-Forecast-Dashboard
 
 # Install dependencies
@@ -502,9 +502,9 @@ python refresh_server.py
 - **Name**: Abdullah Abuzaid
 - **Email**: [Your Dell email]
 - **Teams**: [Your Teams contact]
-- **GitHub**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard
+- **GitHub**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard
 
 **For Technical Issues**:
 - **Documentation**: See COMPREHENSIVE_DOCUMENTATION.md
 - **Troubleshooting**: See DELL_TEAM_ACCESS_GUIDE.md
-- **GitHub Issues**: https://github.com/Abdullahabuzaid2021/Light-L11-Networking-Forecast-Dashboard/issues
+- **GitHub Issues**: https://eos2git.cec.lab.emc.com/Abdullah-Abuzaid/Light-L11-Networking-Forecast-Dashboard/issues
