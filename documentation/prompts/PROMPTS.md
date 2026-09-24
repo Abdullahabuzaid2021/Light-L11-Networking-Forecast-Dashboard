@@ -12,7 +12,7 @@ Create a lightweight web application for L11 networking BOM aggregation that use
 2. Aggregate BOM data from PnL SN6600 tabs
 3. Display networking components with quantities
 4. Provide interactive visualization
-5. Support team sharing via network or GitHub Pages
+5. Support team sharing via network or GitLab Pages
 ```
 
 ### Data Processing Prompt
@@ -40,9 +40,9 @@ Create an interactive HTML dashboard with the following features:
 8. Responsive design for different screen sizes
 ```
 
-### GitHub Pages Deployment Prompt
+### GitLab Pages Deployment Prompt
 ```
-Configure the repository for GitHub Pages deployment:
+Configure the repository for GitLab Pages deployment:
 1. Add .nojekyll file to disable Jekyll processing
 2. Create GitHub Actions workflow for deployment
 3. Configure environment settings for deployment
@@ -95,7 +95,7 @@ To add new Excel files to the dashboard:
 2. Ensure files contain "PnL SN6600" tabs
 3. Run: python process_data.py
 4. Click refresh button in dashboard (if using Flask server)
-5. Or commit and push for GitHub Pages update
+5. Or commit and push for GitLab Pages update
 ```
 
 ### Modifying Dashboard Styling
@@ -137,15 +137,15 @@ If team members cannot access the dashboard:
 2. Test network access: http://10.137.51.248:8000/simple_dashboard.html
 3. Run python network_test.py for diagnostics
 4. Check Windows Firewall settings
-5. Use GitHub Pages as alternative
+5. Use GitLab Pages as alternative
 ```
 
-### GitHub Pages Not Working
+### GitLab Pages Not Working
 ```
-If GitHub Pages deployment fails:
+If GitLab Pages deployment fails:
 1. Check Actions tab for workflow errors
 2. Verify .nojekyll file exists
-3. Ensure GitHub Pages is configured to use GitHub Actions
+3. Ensure GitLab Pages is configured to use GitHub Actions
 4. Check repository name in documentation
 5. Wait 2-3 minutes for deployment to complete
 ```
@@ -167,14 +167,14 @@ git add data.json simple_dashboard.html
 git commit -m "Update data with new Excel files"
 git push origin main
 
-# 5. GitHub Pages will auto-deploy
-# Wait 2-3 minutes and check GitHub Pages URL
+# 5. GitLab Pages will auto-deploy
+# Wait 2-3 minutes and check GitLab Pages URL
 ```
 
 ### Team Sharing Workflow
 ```bash
-# Option 1: GitHub Pages (Recommended)
-# 1. Configure GitHub Pages in repository settings
+# Option 1: GitLab Pages (Recommended)
+# 1. Configure GitLab Pages in repository settings
 # 2. Set Source to GitHub Actions
 # 3. Share: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
@@ -205,14 +205,14 @@ This solution is classified as **Accelerated** - it significantly speeds up the 
 - **Data Cleaning**: Automated filtering of invalid entries and duplicates
 - **Data Transformation**: Automated conversion to JSON format for web display
 - **Visualization**: Automated generation of charts and tables
-- **Deployment**: Automated GitHub Pages deployment on code changes
+- **Deployment**: Automated GitLab Pages deployment on code changes
 
 ### Specific Collaboration Examples
 
 #### Example 1: New Data Integration
 **Human Action**: Downloads new Excel files from SharePoint, places files in data/ directory, runs `python process_data.py`
 
-**AI/System Action**: Automatically reads all Excel files, extracts data from PnL SN6600 tabs, aggregates by Model/PN, creates pivot tables, generates JSON output, embeds data in HTML, deploys to GitHub Pages
+**AI/System Action**: Automatically reads all Excel files, extracts data from PnL SN6600 tabs, aggregates by Model/PN, creates pivot tables, generates JSON output, embeds data in HTML, deploys to GitLab Pages
 
 **Time Savings**: Manual process: 2-3 hours → Automated: 30 seconds
 
@@ -224,9 +224,9 @@ This solution is classified as **Accelerated** - it significantly speeds up the 
 **Time Savings**: Manual analysis: 1-2 hours → Automated: 5 minutes
 
 #### Example 3: Team Sharing
-**Human Action**: Configures GitHub Pages, shares URL with team, explains dashboard usage, answers team questions
+**Human Action**: Configures GitLab Pages, shares URL with team, explains dashboard usage, answers team questions
 
-**AI/System Action**: Automatically deploys to GitHub Pages, serves dashboard globally, handles multiple concurrent users, provides consistent data view
+**AI/System Action**: Automatically deploys to GitLab Pages, serves dashboard globally, handles multiple concurrent users, provides consistent data view
 
 **Time Savings**: Manual sharing: 30-60 minutes → Automated: 2 minutes
 
@@ -256,11 +256,11 @@ This solution is classified as **Accelerated** - it significantly speeds up the 
 2. **Accuracy**: Eliminates manual calculation errors
 3. **Consistency**: Standardized processing every time
 4. **Scalability**: Handles growing datasets without additional effort
-5. **Availability**: 24/7 access via GitHub Pages
+5. **Availability**: 24/7 access via GitLab Pages
 
 ### Technical Learnings
 1. **Data Processing**: Pandas is powerful for Excel data aggregation
-2. **Static Hosting**: GitHub Pages works well for static dashboards with embedded data
+2. **Static Hosting**: GitLab Pages works well for static dashboards with embedded data
 3. **Network Access**: Windows Firewall blocks incoming connections without admin rights
 4. **Data Embedding**: Embedding JSON directly in HTML ensures reliability on static hosting
 5. **Refresh Functionality**: Flask API enables one-click data refresh without server restart
@@ -268,7 +268,7 @@ This solution is classified as **Accelerated** - it significantly speeds up the 
 ### Process Learnings
 1. **File Organization**: Clear separation of data, processing, and presentation layers
 2. **Documentation**: Comprehensive documentation is essential for team adoption
-3. **Alternative Solutions**: Always have backup solutions (GitHub Pages vs network access)
+3. **Alternative Solutions**: Always have backup solutions (GitLab Pages vs network access)
 4. **Version Control**: Git workflow essential for tracking changes and deployment
 5. **User Experience**: Simple interfaces with clear instructions improve adoption
 6. **Human-AI Balance**: Accelerated model maintains human control while dramatically reducing manual effort

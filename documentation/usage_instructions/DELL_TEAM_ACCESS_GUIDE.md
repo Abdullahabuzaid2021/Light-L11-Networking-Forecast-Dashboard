@@ -3,15 +3,15 @@
 ## 🎯 Overview
 This guide provides Dell team members with the requirements and steps to access the L11 Networking Forecast Dashboard.
 
-## 🌐 Primary Access Method: GitHub Pages (RECOMMENDED)
+## 🌐 Primary Access Method: GitLab Pages (RECOMMENDED)
 
 **Dashboard URL**: https://abdullahabuzaid2021.github.io/Light-L11-Networking-Forecast-Dashboard/simple_dashboard.html
 
-### **Advantages of GitHub Pages:**
+### **Advantages of GitLab Pages:**
 - ✅ **No admin rights required**
 - ✅ **No network restrictions** - works from anywhere
 - ✅ **No software installation needed**
-- ✅ **Automatic updates** when code is pushed to GitHub
+- ✅ **Automatic updates** when code is pushed to GitLab
 - ✅ **Permanent URL** - always available
 - ✅ **Global access** - no Dell network needed
 
@@ -49,23 +49,23 @@ This guide provides Dell team members with the requirements and steps to access 
 - **No special software installation needed**
 
 ### **Important Note:**
-Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, the dashboard owner may need admin rights to configure Windows Firewall. Use GitHub Pages as the primary method to avoid firewall issues.
+Dell network access requires **firewall configuration** on the server machine. If you cannot access the network URL, the dashboard owner may need admin rights to configure Windows Firewall. Use GitLab Pages as the primary method to avoid firewall issues.
 
 ---
 
 ## 🔧 Troubleshooting Access Issues
 
-### GitHub Pages Access Issues
+### GitLab Pages Access Issues
 
 #### Issue 1: "404 Not Found" Error
 **Possible Causes:**
-- GitHub Pages deployment not completed
+- GitLab Pages deployment not completed
 - Incorrect URL
 - Repository not public
 
 **Solutions:**
 1. **Wait 2-3 minutes** after git push for deployment
-2. **Verify URL**: Ensure using the correct GitHub Pages URL
+2. **Verify URL**: Ensure using the correct GitLab Pages URL
 3. **Check repository**: Ensure repository is public
 4. **Check Actions tab**: Verify deployment workflow completed successfully
 
@@ -106,7 +106,7 @@ Dell network access requires **firewall configuration** on the server machine. I
 2. **Check IP address**: Ensure using correct IP: http://10.137.51.248:8000/simple_dashboard.html
 3. **Network connectivity**: Test with `ping 10.137.51.248` in command prompt
 4. **VPN connection**: If remote, ensure VPN is connected to Dell network
-5. **Use GitHub Pages**: Recommended alternative that doesn't require network access
+5. **Use GitLab Pages**: Recommended alternative that doesn't require network access
 
 ---
 
@@ -245,7 +245,7 @@ If server-side issues are suspected:
 - **Networking L11 Team**: For data-related questions
 
 ### Emergency Contacts
-- **GitHub Pages down**: Check GitHub Status page
+- **GitLab Pages down**: Check GitLab Status page
 - **Data access issues**: Contact Networking L11 team
 - **Network problems**: Contact Dell IT Help Desk
 
@@ -253,7 +253,7 @@ If server-side issues are suspected:
 
 ## 🔄 Alternative Access Methods
 
-### GitHub Pages Access
+### GitLab Pages Access
 If internal network access fails:
 1. **Go to**: https://abdullahabuzaid2021.github.io/Lightweight-web-app-for-L11-networking-BOM-aggregation---uses-repository-Excel-files/
 2. **Access dashboard**: No network restrictions
@@ -335,8 +335,8 @@ For offline access:
 
 ### User Feedback
 - **Satisfaction survey**: Quarterly user feedback
-- **Feature requests**: GitHub issues for new features
-- **Bug reports**: GitHub issues for problems
+- **Feature requests**: GitLab issues for new features
+- **Bug reports**: GitLab issues for problems
 - **Usage patterns**: Analytics for improvement
 
 ### Continuous Improvement
@@ -453,7 +453,7 @@ For offline access:
 - **Dashboard Access Issues**: Contact Abdullah Abuzaid
 - **Network/VPN Problems**: Dell IT Help Desk
 - **Data Questions**: Networking L11 Team
-- **Technical Issues**: GitHub Issues
+- **Technical Issues**: GitLab Issues
 
 **Dashboard URL:** http://10.137.51.248:8000/simple_dashboard.html
 

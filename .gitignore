@@ -39,5 +39,5 @@ Thumbs.db
 # Keep sample Excel files
 !data/*.xlsx
 
-# Include data.json for GitHub Pages deployment
+# Include data.json for GitLab Pages deployment
 !data.json

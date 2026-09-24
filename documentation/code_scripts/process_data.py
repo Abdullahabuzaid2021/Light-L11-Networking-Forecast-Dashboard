@@ -135,7 +135,7 @@ def process_bom_data(directory):
         return None, None, None, None, f"Error processing data: {str(e)}"
 
 def embed_data_in_html(json_data, script_dir):
-    """Embed JSON data directly into HTML file for GitHub Pages reliability"""
+    """Embed JSON data directly into HTML file for GitLab Pages reliability"""
     html_file = script_dir / 'dashboard' / 'simple_dashboard.html'
     
     try:
@@ -157,7 +157,7 @@ def embed_data_in_html(json_data, script_dir):
             with open(html_file, 'w', encoding='utf-8') as f:
                 f.write(html_content)
             
-            print("Data embedded into dashboard/simple_dashboard.html for GitHub Pages")
+            print("Data embedded into dashboard/simple_dashboard.html for GitLab Pages")
         else:
             print("Warning: Could not find dashboardData pattern in HTML")
             
@@ -229,5 +229,5 @@ if __name__ == "__main__":
         print("2. Or share the repository with your team")
         print("3. For updates: add new Excel files to data/ and re-run this script")
         
-        # Embed data into HTML for GitHub Pages
+        # Embed data into HTML for GitLab Pages
         embed_data_in_html(json_data, script_dir)

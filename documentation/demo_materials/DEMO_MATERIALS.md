@@ -177,7 +177,7 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 [0:45-1:00] Viewing console output
 [1:00-1:15] Refreshing dashboard to see new data
 [1:15-1:30] Committing and pushing to GitHub
-[1:30-1:45] GitHub Pages deployment
+[1:30-1:45] GitLab Pages deployment
 ```
 
 **Recording Instructions**:
@@ -196,8 +196,8 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 **Script**:
 ```
 [0:00-0:15] Overview of sharing options
-[0:15-0:30] GitHub Pages setup and configuration
-[0:30-0:45] Sharing GitHub Pages URL
+[0:15-0:30] GitLab Pages setup and configuration
+[0:30-0:45] Sharing GitLab Pages URL
 [0:45-1:00] Alternative: Network access setup
 [1:00-1:15] Dell team member access instructions
 [1:15-1:30] Troubleshooting common issues
@@ -205,7 +205,7 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 
 **Recording Instructions**:
 ```bash
-# Record GitHub Pages settings
+# Record GitLab Pages settings
 # Show repository configuration
 # Demonstrate team access
 ```
@@ -240,7 +240,7 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 - Interactive web dashboard
 - Real-time data refresh
 - Team sharing capabilities
-- GitHub Pages deployment
+- GitLab Pages deployment
 
 ### Slide 4: Key Features
 **Title**: Dashboard Features
@@ -282,7 +282,7 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 ### Slide 8: Team Sharing
 **Title**: Sharing with Team
 **Content**:
-- GitHub Pages (recommended)
+- GitLab Pages (recommended)
 - Network access (alternative)
 - No software installation needed
 - Access from anywhere
@@ -304,7 +304,7 @@ This document contains the demo materials for the L11 Networking Forecast Dashbo
 - 449,774 units aggregated
 - 3 Excel files processed
 - Processing time: <5 seconds
-- Team access: Global via GitHub Pages
+- Team access: Global via GitLab Pages
 
 ### Slide 11: Future Enhancements
 **Title**: What's Next
@@ -415,7 +415,7 @@ pie chart shows percentage distribution."
 processes the new Excel files and updates the display."
 
 [Team Sharing]
-"Sharing with the team is easy. We use GitHub Pages for global access without any 
+"Sharing with the team is easy. We use GitLab Pages for global access without any 
 network restrictions. Team members can access the dashboard from anywhere."
 
 [Conclusion]
@@ -429,7 +429,7 @@ for L11 networking planning."
 - [ ] Start Flask server on port 8000
 - [ ] Test dashboard locally
 - [ ] Prepare sample Excel files
-- [ ] Verify GitHub Pages deployment
+- [ ] Verify GitLab Pages deployment
 - [ ] Test network access if applicable
 - [ ] Prepare screenshots and videos
 - [ ] Test presentation slides
@@ -486,11 +486,11 @@ python refresh_server.py
 1. **Dashboard not loading**: Check server is running
 2. **Data not showing**: Run process_data.py
 3. **Charts not displaying**: Check JavaScript console
-4. **Network access blocked**: Use GitHub Pages
-5. **GitHub Pages not working**: Check Actions tab
+4. **Network access blocked**: Use GitLab Pages
+5. **GitLab Pages not working**: Check Actions tab
 
 ### Backup Plans
-- Have GitHub Pages URL ready
+- Have GitLab Pages URL ready
 - Keep screenshots available
 - Have video recording as backup
 - Prepare offline demo materials
