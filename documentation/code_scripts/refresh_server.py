@@ -13,7 +13,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Get the directory where this script is located
-BASE_DIR = Path(__file__).parent.parent.resolve()
+BASE_DIR = Path(__file__).parent.parent.parent.resolve()
 
 def process_data():
     """Run the data processing script"""
@@ -66,7 +66,12 @@ def serve_index():
     """Serve the main dashboard"""
     return send_from_directory(BASE_DIR / 'dashboard', 'simple_dashboard.html')
 
-@app.route('/simple_dashboard.html')
+@app.route('/dashboard/')
+def serve_dashboard_folder():
+    """Serve the dashboard folder"""
+    return send_from_directory(BASE_DIR / 'dashboard', 'index.html')
+
+@app.route('/dashboard/simple_dashboard.html')
 def serve_dashboard():
     """Serve the dashboard"""
     return send_from_directory(BASE_DIR / 'dashboard', 'simple_dashboard.html')
